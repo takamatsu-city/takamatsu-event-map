@@ -1,12 +1,18 @@
+:root {
+  --header-color: #007AC3;
+  ;
+}
+
 html,
 body {
   margin: 0;
   padding: 0;
 }
 
-header, .menu-header {
+header,
+.menu-header {
   position: relative;
-  background-color: #007AC3;
+  background-color: var(--header-color);
   color: #ffffff;
   width: 100%;
   height: 50px;
@@ -15,7 +21,8 @@ header, .menu-header {
   align-items: center;
 }
 
-.header-title, .menu-title {
+.header-title,
+.menu-title {
   font-weight: 700;
 }
 
@@ -29,7 +36,7 @@ header, .menu-header {
   justify-content: center;
   align-items: center;
   z-index: 90;
-  background-color: #007AC3;
+  background-color: var(--header-color);
 }
 
 .menu-btn span,
@@ -81,7 +88,7 @@ header, .menu-header {
   top: 0;
   left: 0;
   z-index: 80;
-  background-color: #007AC3;
+  background-color: var(--header-color);
 }
 
 .menu-content ul {
@@ -93,7 +100,16 @@ header, .menu-header {
   list-style: none;
 }
 
-.menu-content ul li a {
+.menu-content ul li summary {
+  list-style: none;
+}
+
+.menu-content ul li details p {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.menu-content ul li details {
   display: block;
   width: 100%;
   font-size: 15px;
@@ -101,11 +117,11 @@ header, .menu-header {
   box-sizing: border-box;
   color: #ffffff;
   text-decoration: none;
-  padding: 12px 15px 12px 0;
+  padding: 12px 20px 12px 0;
   position: relative;
 }
 
-.menu-content ul li a::before {
+.menu-content ul li details::before {
   content: "";
   width: 7px;
   height: 7px;
@@ -117,6 +133,10 @@ header, .menu-header {
   top: 16px;
 }
 
+.menu-content ul li details[open]::before {
+  transform: rotate(135deg);
+}
+
 .menu-content {
   width: 100%;
   height: 100%;
@@ -124,10 +144,10 @@ header, .menu-header {
   top: 0;
   left: 100%;
   z-index: 80;
-  background-color: #3584bb;
+  background-color: var(--header-color);
   transition: all 0.5s;
 }
 
-#menu-btn-check:checked ~ .menu-content {
+#menu-btn-check:checked~.menu-content {
   left: 0;
 }
