@@ -146,8 +146,17 @@ header,
   z-index: 80;
   background-color: var(--header-color);
   transition: all 0.5s;
+  display: flex;
+  flex-direction: column;
 }
 
 #menu-btn-check:checked~.menu-content {
   left: 0;
+}
+
+.menu-footer {
+  width: 100%;
+  height: inherit;
+  background-color: #ffffff;
+  flex-grow: 1;
 }
