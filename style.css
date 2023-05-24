@@ -1,9 +1,10 @@
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
 }
 
-header {
+header, .menu-header {
   position: relative;
   background-color: #007AC3;
   color: #ffffff;
@@ -14,20 +15,20 @@ header {
   align-items: center;
 }
 
-.header-title {
+.header-title, .menu-title {
   font-weight: 700;
 }
 
 .menu-btn {
   position: absolute;
   right: 10px;
-  top:10px;
+  top: 10px;
   height: 30px;
   width: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 2;
+  z-index: 90;
   background-color: #007AC3;
 }
 
@@ -42,25 +43,91 @@ header {
   background-color: #ffffff;
   position: absolute;
 }
+
 .menu-btn span:before {
   bottom: 7px;
 }
+
 .menu-btn span:after {
   top: 7px;
 }
 
-#menu-btn-check:checked ~ .menu-btn span {
-    background-color: rgba(255, 255, 255, 0);
+#menu-btn-check:checked~.menu-btn span {
+  background-color: rgba(255, 255, 255, 0);
 }
-#menu-btn-check:checked ~ .menu-btn span::before {
-    bottom: 0;
-    transform: rotate(45deg);
+
+#menu-btn-check:checked~.menu-btn span::before {
+  bottom: 0;
+  transform: rotate(45deg);
 }
-#menu-btn-check:checked ~ .menu-btn span::after {
-    top: 0;
-    transform: rotate(-45deg);
+
+#menu-btn-check:checked~.menu-btn span::after {
+  top: 0;
+  transform: rotate(-45deg);
 }
 
 #menu-btn-check {
-    display: none;
+  display: none;
+}
+
+.menu-header {
+  border-bottom: solid 1px rgba(255, 255, 255, 0.5);
+}
+
+.menu-content {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 80;
+  background-color: #007AC3;
+}
+
+.menu-content ul {
+  padding: 0 0 0 20px;
+}
+
+.menu-content ul li {
+  border-bottom: solid 1px rgba(255, 255, 255, 0.5);
+  list-style: none;
+}
+
+.menu-content ul li a {
+  display: block;
+  width: 100%;
+  font-size: 15px;
+  font-weight: 700;
+  box-sizing: border-box;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 12px 15px 12px 0;
+  position: relative;
+}
+
+.menu-content ul li a::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-top: solid 2px rgba(255, 255, 255, 0.5);
+  border-right: solid 2px rgba(255, 255, 255, 0.5);
+  transform: rotate(45deg);
+  position: absolute;
+  right: 30px;
+  top: 16px;
+}
+
+.menu-content {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 100%;
+  z-index: 80;
+  background-color: #3584bb;
+  transition: all 0.5s;
+}
+
+#menu-btn-check:checked ~ .menu-content {
+  left: 0;
 }
