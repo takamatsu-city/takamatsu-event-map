@@ -92,7 +92,7 @@ header,
 }
 
 .menu-content ul {
-  padding: 0 0 0 20px;
+  padding: 0 0 10px 20px;
 }
 
 .menu-content ul li {
@@ -146,8 +146,6 @@ header,
   z-index: 80;
   background-color: var(--header-color);
   transition: all 0.5s;
-  display: flex;
-  flex-direction: column;
 }
 
 #menu-btn-check:checked~.menu-content {
@@ -157,6 +155,68 @@ header,
 .menu-footer {
   width: 100%;
   height: inherit;
+  color: black;
   background-color: #ffffff;
   flex-grow: 1;
+}
+
+.menu-footer .social-icons {
+  padding: 15px 20px
+}
+
+.menu-footer .social-icons .social-icons-title {
+  color: var(--header-color);
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.menu-footer .social-icons ul {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 10px auto;
+}
+
+.menu-footer .social-icons ul li {
+  margin-right: 25px;
+}
+
+.menu-footer .social-icons ul img {
+  width: 40px;
+}
+
+.menu-footer .divider {
+  border: 1px solid rgba(0, 122, 195, 0.3);
+  margin: auto 0;
+  width: 255px;
+}
+
+.menu-footer .brand {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 25px 20px;
+}
+
+.menu-footer .brand .brand-title span {
+  font-size: 10px;
+  line-height: 1.9;
+}
+
+.menu-footer .brand .brand-title p {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1B79C4;
+  line-height: 22px;
+}
+
+.menu-footer .brand .logo {
+  width: 50px;
+  margin-right: 10px;
+}
+
+.menu-footer .copy-right {
+  font-size: 10px;
+  padding: 0px 20px;
 }
