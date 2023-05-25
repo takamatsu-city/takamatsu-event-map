@@ -73,7 +73,8 @@
               </li>
             </ul>
           </div>
-          <hr class="divider"></hr>
+          <hr class="divider">
+          </hr>
           <div class="brand">
             <img class="logo" src="./img/logo.svg" alt="logo">
             <div class="brand-title">
@@ -86,8 +87,17 @@
       </div>
     </div>
   </header>
-  <div id="map"></div>
+  <div id="map" data-navigation-control="off"></div>
   <div id="list"></div>
+  <script type="text/javascript" src="https://cdn.geolonia.com/v1/embed?geolonia-api-key=YOUR-API-KEY"></script>
+  <script>
+    const map = new geolonia.Map({
+      container: 'map',
+      zoom: 14,
+      center: [134.0465471, 34.3427995],
+      style: 'geolonia/basic',
+    });
+  </script>
 </body>
 
 </html>
