@@ -231,3 +231,35 @@ header,
   height: 100%;
   width: 100%;
 }
+
+#banner {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  background-color: #fff;
+  width: 300px;
+  margin: auto;
+  border-radius: 30px;
+  padding: 20px;
+}
+
+.banner-title {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.banner-period {
+  background-color: #007AC3;
+  color: #ffffff;
+  border-radius: 5px;
+  padding: 0 5px;
+  font-size: 14px;
+  margin: 10px 0;
+  width: fit-content;
+}
+
+.banner-description {
+  font-size: 14px;
+}
