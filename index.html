@@ -93,9 +93,26 @@
   <script>
     const map = new geolonia.Map({
       container: 'map',
-      zoom: 14,
-      center: [134.0465471, 34.3427995],
+      zoom: 12.5,
+      center: [134.05682, 34.33293],
       style: 'geolonia/basic',
+    });
+
+    map.on('load', async () => {
+
+      const data = await fetch('./data.geojson')
+      const geojson = await data.json()
+
+      geojson.features.forEach((item) => {
+        const properties = item.properties;
+
+        const marker = new geolonia.Marker({
+          color: '#ff0000',
+          draggable: false,
+        })
+          .setLngLat(item.geometry.coordinates)
+          .addTo(map);
+      });
     });
   </script>
 </body>
