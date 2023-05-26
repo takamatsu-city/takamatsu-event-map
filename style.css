@@ -308,3 +308,47 @@ header,
 #banner-close span {
   background-color: rgba(255, 255, 255, 0);
 }
+
+#list {
+  position: absolute;
+  width: 100%;
+  min-height: 10vh;
+  /* min-height: calc(48vh + 65px);   */
+  z-index: 999999999;
+  background-color: #ffffff;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  bottom: 0;
+}
+
+#list::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 8px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 40px;
+  height: 5px;
+  border-radius: 4px;
+  background-color: rgba(32, 32, 32, 0.2);
+}
+
+.list-header {
+  display: flex;
+  align-items: center;
+  padding: 30px;
+}
+
+.list-header .title {
+  font-weight: 600;
+}
+
+.fa-list {
+  color: var(--header-color);
+  margin-right: 10px;
+  font-weight: 900;
+  font-size: 20px;
+}
+

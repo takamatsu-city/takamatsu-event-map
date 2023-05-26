@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>たかまつエリアマップ</title>
   <link rel="stylesheet" href="./style.css">
+  <script src="https://kit.fontawesome.com/5a581d1c6f.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -96,7 +97,14 @@
     </a>
   </div>
   <div id="map" data-navigation-control="off"></div>
-  <div id="list"></div>
+  <div id="list">
+    <div id="list-content">
+      <div class="list-header">
+        <i class="fa-sharp fa-solid fa-list"></i>
+        <div class="title">イベントリスト</div>
+      </div>
+    </div>
+  </div>
   <script type="text/javascript" src="https://cdn.geolonia.com/v1/embed?geolonia-api-key=YOUR-API-KEY"></script>
   <script>
     const map = new geolonia.Map({
