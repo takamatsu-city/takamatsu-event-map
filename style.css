@@ -239,7 +239,8 @@ header,
   right: 0;
   z-index: 2;
   background-color: #fff;
-  width: 300px;
+  width: 80%;
+  max-width: 350px;
   margin: auto;
   border-radius: 30px;
   padding: 15px 20px;
@@ -269,7 +270,7 @@ header,
   font-size: 14px;
 }
 
-.banner-close {
+#banner-close {
   height: 30px;
   width: 30px;
   display: flex;
@@ -282,9 +283,9 @@ header,
   padding: 5px;
 }
 
-.banner-close span,
-.banner-close span:before,
-.banner-close span:after {
+#banner-close span,
+#banner-close span:before,
+#banner-close span:after {
   content: '';
   display: block;
   height: 2px;
@@ -294,16 +295,16 @@ header,
   position: absolute;
 }
 
-.banner-close span:before {
+#banner-close span:before {
   bottom: 0;
   transform: rotate(45deg);
 }
 
-.banner-close span:after {
+#banner-close span:after {
   top: 0;
   transform: rotate(-45deg);
 }
 
-.banner-close span {
+#banner-close span {
   background-color: rgba(255, 255, 255, 0);
 }
