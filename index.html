@@ -161,7 +161,8 @@
       </div>
     </div>
   </div>
-  <script type="text/javascript" src="https://cdn.geolonia.com/v1/embed?geolonia-api-key=YOUR-API-KEY"></script>
+  <script type="text/javascript"
+    src="https://cdn.geolonia.com/v1/embed?geolonia-api-key=09cde899b70241ef958de8e2193c2b5a"></script>
   <script>
 
     const listContent1 = document.getElementById('content1');
@@ -174,24 +175,24 @@
       container: 'map',
       zoom: 12.5,
       center: [134.05682, 34.33293],
-      style: 'geolonia/basic',
+      style: './style.json',
     });
 
     map.on('load', async () => {
 
-      const data = await fetch('./data.geojson')
-      const geojson = await data.json()
+      // const data = await fetch('./data.geojson')
+      // const geojson = await data.json()
 
-      geojson.features.forEach((item) => {
-        const properties = item.properties;
+      // geojson.features.forEach((item) => {
+      //   const properties = item.properties;
 
-        const marker = new geolonia.Marker({
-          color: '#ff0000',
-          draggable: false,
-        })
-          .setLngLat(item.geometry.coordinates)
-          .addTo(map);
-      });
+      //   const marker = new geolonia.Marker({
+      //     color: '#ff0000',
+      //     draggable: false,
+      //   })
+      //     .setLngLat(item.geometry.coordinates)
+      //     .addTo(map);
+      // });
     });
 
     const closeButton = document.getElementById('banner-close');
