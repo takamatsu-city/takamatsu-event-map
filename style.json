@@ -19,11 +19,6 @@
       "type": "vector",
       "url": "https://tileserver.geolonia.com/gsi-extra-v2/tiles.json?key=YOUR-API-KEY"
     },
-    "dem": {
-      "type": "raster-dem",
-      "url": "https://tileserver.geolonia.com/gsi-dem/tiles.json?key=YOUR-API-KEY",
-      "attribution": "<a href=\"https://www.gsi.go.jp/\" target=\"_blank\">&copy; GSI Japan</a>"
-    },
     "takamatsuarea": {
       "type": "geojson",
       "data": "./data.geojson"
@@ -500,27 +495,6 @@
             ]
           ]
         }
-      }
-    },
-    {
-      "id": "hillshading",
-      "source": "dem",
-      "type": "hillshade",
-      "maxzoom": 12,
-      "paint": {
-        "hillshade-exaggeration": {
-          "stops": [
-            [
-              4,
-              0.15
-            ],
-            [
-              12,
-              0
-            ]
-          ]
-        },
-        "hillshade-shadow-color": "#000000"
       }
     },
     {
