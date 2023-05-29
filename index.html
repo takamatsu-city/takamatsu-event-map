@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>たかまつエリアマップ</title>
   <link rel="stylesheet" href="./style.css">
+  <script src="https://kit.fontawesome.com/5a581d1c6f.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -90,15 +91,85 @@
   <div id="banner">
     <label id="banner-close"><span></span></label>
     <a href="" target="_blank" rel="noopener noreferrer">
-      <div class="banner-title">BOULANGERIE PATISSERIE Risum <br/>（ブーランジェリー パティスリー リズム）</div>
+      <div class="banner-title">BOULANGERIE PATISSERIE Risum <br />（ブーランジェリー パティスリー リズム）</div>
       <div class="banner-period">2022.05.05-2022.05.05</div>
       <div class="banner-description">一般社団法人「街角に音楽を@香川」主催の同イベント。2015（平成27）年から毎年開催し、サンポート高松をはじめ、市内各所で音楽ステージを開いてきた。</div>
     </a>
   </div>
   <div id="map" data-navigation-control="off"></div>
-  <div id="list"></div>
+  <div id="list">
+    <label id="list-close"><span></span></label>
+    <div id="list-content">
+      <div id="content1">
+        <div class="list-header">
+          <i class="fa-sharp fa-solid fa-list"></i>
+          <div class="title">イベントリスト</div>
+        </div>
+      </div>
+      <div id="content2" style="display: none;">
+        <div class="list-title">BOULANGERIE PATISSERIE Risum <br />（ブーランジェリー パティスリー リズム）</div>
+        <div class="list-period">2022.05.05-2022.05.05</div>
+        <ul>
+          <li>
+            <img src="./img/time.svg" alt="time icon">
+            <div>14:00~ 19:00</div>
+          </li>
+          <li>
+            <img src="./img/place.svg" alt="place icon">
+            <div>サンポート高松多目的広場 石のステージ</div>
+          </li>
+          <li>
+            <img src="./img/transport.svg" alt="transport icon">
+            <div>JR高松駅から徒歩3分</div>
+          </li>
+          <li class="display-block">
+            <div class="list-description">
+              一般社団法人「街角に音楽を@香川」主催の同イベント。
+              2015（平成27)年から毎年開催し、サンポート高松をはじめ、市内各所で音楽ステージを開いてきた。
+            </div>
+            <div>
+              <span class="list-label">主催：</span>MUSIC BLUE TAKAMATSU 実行委員会
+              <span class="list-label">連絡先：</span>087-xxx-xxxx
+            </div>
+          </li>
+          <li class="display-block">
+            <div class="icon-container"><img src="./img/price.svg" alt="price icon">1,500円</div>
+            <span class="list-price-description">大人1名1500円、子供1名500円(18歳以下）、65歳以上1名1000円</span>
+          </li>
+          <li>
+            <img src="./img/target.svg" alt="target icon">
+            <div>家族</div>
+          </li>
+          <li>
+            <img src="./img/address.svg" alt="address icon">
+            <div>香川県高松市サンポート3-33</div>
+          </li>
+        </ul>
+        <div class="list-footer-content">
+          <div class="box">
+            <img src="./img/walk.svg" alt="walk icon">
+            <div>ここへ行く</div>
+          </div>
+          <div class="box walk">
+            <img src="./img/compass.svg" alt="compass icon">
+            <div>Webサイト</div>
+          </div>
+          <div class="circle">
+            <img src="./img/share.svg" alt="share icon">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <script type="text/javascript" src="https://cdn.geolonia.com/v1/embed?geolonia-api-key=YOUR-API-KEY"></script>
   <script>
+
+    const listContent1 = document.getElementById('content1');
+    const listContent2 = document.getElementById('content2');
+
+    listContent1.style.display = 'block';
+    listContent2.style.display = 'none';
+
     const map = new geolonia.Map({
       container: 'map',
       zoom: 12.5,
@@ -127,6 +198,21 @@
     closeButton.addEventListener('click', () => {
       document.getElementById('banner').style.display = 'none';
     });
+
+    const list = document.getElementById('list');
+    const listCloseButton = document.getElementById('list-close');
+
+    list.addEventListener('click', () => {
+      list.style.height = '50vh';
+      listCloseButton.style.display = 'flex';
+    });
+
+    listCloseButton.addEventListener('click', () => {
+      list.style.height = '10vh';
+      listCloseButton.style.display = 'none';
+      event.stopPropagation();
+    });
+
   </script>
 </body>
 
