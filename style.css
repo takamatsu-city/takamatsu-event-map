@@ -332,6 +332,13 @@ header,
   border-top-right-radius: 24px;
   bottom: 0;
   transition: transform 0.4s ease;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+#list::-webkit-scrollbar{
+  display:none;
 }
 
 #list.active {
@@ -352,10 +359,13 @@ header,
   background-color: rgba(32, 32, 32, 0.2);
 }
 
+#list-content {
+  padding: 30px;
+}
+
 .list-header {
   display: flex;
   align-items: center;
-  padding: 30px;
 }
 
 .list-header .title {
