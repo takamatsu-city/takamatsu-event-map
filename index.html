@@ -98,6 +98,7 @@
   </div>
   <div id="map" data-navigation-control="off"></div>
   <div id="list">
+    <label id="list-close"><span></span></label>
     <div id="list-content">
       <div class="list-header">
         <i class="fa-sharp fa-solid fa-list"></i>
@@ -135,6 +136,21 @@
     closeButton.addEventListener('click', () => {
       document.getElementById('banner').style.display = 'none';
     });
+
+    const list = document.getElementById('list');
+    const listCloseButton = document.getElementById('list-close');
+
+    list.addEventListener('click', () => {
+      list.style.height = '50vh';
+      listCloseButton.style.display = 'flex';
+    });
+
+    listCloseButton.addEventListener('click', () => {
+      list.style.height = '10vh';
+      listCloseButton.style.display = 'none';
+      event.stopPropagation();
+    });
+
   </script>
 </body>
 
