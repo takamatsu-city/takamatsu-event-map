@@ -433,29 +433,40 @@ header,
 
 .list-footer-content {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   margin-top: 30px;
 }
 
 .list-footer-content .box {
   border: 1px solid var(--header-color);
-  padding: 14px 15px;
+  padding: 10px 11px;
   margin-right: 10px;
   color: var(--header-color);
   border-radius: 10px;
   display: flex;
   align-items: center;
-  font-size: 14px;
+  font-size: 15px;
 }
 
-.list-footer-content .box i {
+.list-footer-content .box img {
   margin-right: 5px;
+  width: 17px;
+}
+
+.list-footer-content .box.walk {
+  height: 26px;
+  margin-right: 18px;
 }
 
 .list-footer-content .circle {
   border: 1px solid var(--header-color);
-  padding: 12px 15px;
+  padding: 9px 10px;
   color: var(--header-color);
   border-radius: 60px;
+  display: flex;
+  align-items: center;
+}
+
+.list-footer-content .circle img {
+  width: 20px;
 }
