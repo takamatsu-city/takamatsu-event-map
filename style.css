@@ -337,7 +337,7 @@ header,
   scrollbar-width: none;
 }
 
-#list::-webkit-scrollbar{
+.content::-webkit-scrollbar{
   display:none;
 }
 
