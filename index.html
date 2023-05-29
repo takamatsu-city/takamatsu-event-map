@@ -107,7 +107,7 @@
         </div>
       </div>
       <div id="content2" style="display: none;">
-        <div class="list-title">BOULANGERIE PATISSERIE Risum <br />（ブーランジェリー パティスリー リズム）</div>
+        <div class="list-title">BOULANGERIE PATISSERIE Risum（ブーランジェリー パティスリー リズム）</div>
         <div class="list-period">2022.05.05-2022.05.05</div>
         <ul>
           <li>
@@ -180,19 +180,27 @@
 
     map.on('load', async () => {
 
-      // const data = await fetch('./data.geojson')
-      // const geojson = await data.json()
+      map.on('click', (e) => {
 
-      // geojson.features.forEach((item) => {
-      //   const properties = item.properties;
+        const features = map.queryRenderedFeatures(e.point);
+        if (features.length > 0) {
+          const feature = features[0];
+          const layerId = feature.layer.id;
 
-      //   const marker = new geolonia.Marker({
-      //     color: '#ff0000',
-      //     draggable: false,
-      //   })
-      //     .setLngLat(item.geometry.coordinates)
-      //     .addTo(map);
-      // });
+          if (layerId === 'takamatsuarea') {
+            list.style.height = '50vh';
+            listContent1.style.display = 'none';
+            listContent2.style.display = 'block';
+            listCloseButton.style.display = 'flex';
+          } else {
+            list.style.height = '10vh';
+            listContent1.style.display = 'block';
+            listContent2.style.display = 'none';
+            listCloseButton.style.display = 'none';
+          }
+        }
+      })
+      
     });
 
     const closeButton = document.getElementById('banner-close');
@@ -211,6 +219,8 @@
     listCloseButton.addEventListener('click', () => {
       list.style.height = '10vh';
       listCloseButton.style.display = 'none';
+      listContent1.style.display = 'block';
+      listContent2.style.display = 'none';
       event.stopPropagation();
     });
 

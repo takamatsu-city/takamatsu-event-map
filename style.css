@@ -256,6 +256,11 @@ header,
   margin-right: 25px;
 }
 
+.list-title {
+  font-size: 16px;
+  word-break: keep-all;
+}
+
 .banner-period, .list-period {
   background-color: #007AC3;
   color: #ffffff;
@@ -337,7 +342,7 @@ header,
   scrollbar-width: none;
 }
 
-.content::-webkit-scrollbar{
+#list::-webkit-scrollbar{
   display:none;
 }
 
