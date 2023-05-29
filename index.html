@@ -173,8 +173,8 @@
 
     const map = new geolonia.Map({
       container: 'map',
-      zoom: 12.4,
-      center: [134.05862, 34.33722],
+      zoom: 11.5,
+      center: [134.0586, 34.3434],
       style: './style.json'
     });
 
@@ -188,7 +188,7 @@
           const layerId = feature.layer.id;
 
           if (layerId === 'takamatsuarea') {
-            list.style.height = '50vh';
+            list.style.height = '60vh';
             listContent1.style.display = 'none';
             listContent2.style.display = 'block';
             listCloseButton.style.display = 'flex';
@@ -212,7 +212,7 @@
     const listCloseButton = document.getElementById('list-close');
 
     list.addEventListener('click', () => {
-      list.style.height = '50vh';
+      list.style.height = '60vh';
       listCloseButton.style.display = 'flex';
     });
 

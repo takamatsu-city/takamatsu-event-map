@@ -8448,6 +8448,7 @@
       "source": "takamatsuarea",
       "layout": {
         "icon-size": 0.5,
+        "icon-allow-overlap": true,
         "icon-image": [
           "coalesce",
           [
