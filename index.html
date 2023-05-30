@@ -179,14 +179,20 @@
             <label for="button3">今週末</label>
           </div>
         </div>
-        <input type="text" placeholder="キーワードで絞り込み">
-        <button>絞り込み</button>
+        <div class="keyword-container">
+          <input id="keyword" type="text" placeholder="キーワードで絞り込み">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <button class="submit-button">絞り込み<i class="fa-solid fa-chevron-right"></i></button>
       </div>
     </div>
   </div>
   <script type="text/javascript"
     src="https://cdn.geolonia.com/v1/embed?geolonia-api-key=09cde899b70241ef958de8e2193c2b5a"></script>
   <script>
+
+  const contentIds = ['content1', 'content2', 'search']
+  const elements = contentIds.map(id => document.getElementById(id));
 
     const displayTargetElement = (targetId) => {
       elements.forEach(element => {
@@ -198,10 +204,7 @@
       });
     }
 
-    const contentIds = ['content1', 'content2', 'search']
-    const elements = contentIds.map(id => document.getElementById(id));
-
-    displayTargetElement('content1');
+    displayTargetElement('search');
 
     const map = new geolonia.Map({
       container: 'map',
