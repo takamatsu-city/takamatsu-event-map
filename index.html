@@ -163,6 +163,25 @@
           </div>
         </div>
       </div>
+      <div id="search">
+        <div class="content-title"><i class="fa-solid fa-calendar-days"></i>開催日から探す</div>
+        <div class="radio-button-group mts">
+          <div class="item">
+            <input type="radio" name="button-group" class="radio-button" value="1" id="button1" checked />
+            <label for="button1">今日</label>
+          </div>
+          <div class="item">
+            <input type="radio" name="button-group" class="radio-button" value="2" id="button2" />
+            <label for="button2">明日</label>
+          </div>
+          <div class="item">
+            <input type="radio" name="button-group" class="radio-button" value="3" id="button3" />
+            <label for="button3">今週末</label>
+          </div>
+        </div>
+        <input type="text" placeholder="キーワードで絞り込み">
+        <button>絞り込み</button>
+      </div>
     </div>
   </div>
   <script type="text/javascript"
@@ -171,9 +190,13 @@
 
     const listContent1 = document.getElementById('content1');
     const listContent2 = document.getElementById('content2');
+    const listContent3 = document.getElementById('search');
 
-    listContent1.style.display = 'block';
+
+    listContent1.style.display = 'none';
     listContent2.style.display = 'none';
+    listContent3.style.display = 'block';
+
 
     const map = new geolonia.Map({
       container: 'map',
