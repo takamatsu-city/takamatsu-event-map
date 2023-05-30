@@ -98,7 +98,7 @@
   </div>
   <div id="map" data-navigation-control="off"></div>
   <div class="icons">
-    <img class="search" src="./img/search.svg" alt="search icon">
+    <img id="search-button" class="search" src="./img/search.svg" alt="search icon">
     <img class="point" src="./img/point.svg" alt="point icon">
   </div>
   <div id="list">
@@ -163,7 +163,7 @@
           </div>
         </div>
       </div>
-      <div id="search">
+      <div id="search" style="display: none;">
         <div class="content-title"><i class="fa-solid fa-calendar-days"></i>開催日から探す</div>
         <div class="radio-button-group mts">
           <div class="item">
@@ -204,7 +204,7 @@
       });
     }
 
-    displayTargetElement('search');
+    displayTargetElement('content1');
 
     const map = new geolonia.Map({
       container: 'map',
@@ -244,7 +244,7 @@
     closeButton.addEventListener('click', () => {
       document.getElementById('banner').style.display = 'none';
     });
-
+    
     const list = document.getElementById('list');
     const listCloseButton = document.getElementById('list-close');
 
@@ -258,6 +258,13 @@
       listCloseButton.style.display = 'none';
       displayTargetElement('content1');
       event.stopPropagation();
+    });
+
+    const searchButton = document.getElementById('search-button');
+    searchButton.addEventListener('click', () => {
+      list.style.height = '60vh';
+      listCloseButton.style.display = 'flex';
+      displayTargetElement('search');
     });
 
   </script>

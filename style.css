@@ -560,7 +560,7 @@ header,
 }
 
 #search {
-  display: flex !important;
+  display: flex;
   flex-direction: column;
   max-width: 300px;
   margin: auto;
