@@ -188,15 +188,20 @@
     src="https://cdn.geolonia.com/v1/embed?geolonia-api-key=09cde899b70241ef958de8e2193c2b5a"></script>
   <script>
 
-    const listContent1 = document.getElementById('content1');
-    const listContent2 = document.getElementById('content2');
-    const listContent3 = document.getElementById('search');
+    const displayTargetElement = (targetId) => {
+      elements.forEach(element => {
+        if (element.id === targetId) {
+          element.style.display = 'block';
+        } else {
+          element.style.display = 'none';
+        }
+      });
+    }
 
+    const contentIds = ['content1', 'content2', 'search']
+    const elements = contentIds.map(id => document.getElementById(id));
 
-    listContent1.style.display = 'none';
-    listContent2.style.display = 'none';
-    listContent3.style.display = 'block';
-
+    displayTargetElement('content1');
 
     const map = new geolonia.Map({
       container: 'map',
@@ -217,14 +222,15 @@
 
           if (layerId === 'takamatsuarea') {
             list.style.height = '60vh';
-            listContent1.style.display = 'none';
-            listContent2.style.display = 'block';
             listCloseButton.style.display = 'flex';
+
+            displayTargetElement('content2');
+
           } else {
             list.style.height = '10vh';
-            listContent1.style.display = 'block';
-            listContent2.style.display = 'none';
             listCloseButton.style.display = 'none';
+
+            displayTargetElement('content1');
           }
         }
       })
@@ -247,8 +253,7 @@
     listCloseButton.addEventListener('click', () => {
       list.style.height = '10vh';
       listCloseButton.style.display = 'none';
-      listContent1.style.display = 'block';
-      listContent2.style.display = 'none';
+      displayTargetElement('content1');
       event.stopPropagation();
     });
 
