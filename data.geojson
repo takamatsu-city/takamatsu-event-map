@@ -4,12 +4,13 @@
     {
       "type": "Feature",
       "properties": {
+        "name":"高松駅前広場",
         "marker-symbol": "uchiwa"
       },
       "geometry": {
         "coordinates": [
-          134.04728668137906,
-          34.35146315665457
+          134.047204400728,
+          34.351207608751665
         ],
         "type": "Point"
       }
@@ -17,12 +18,13 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "センタービル",
         "marker-symbol": "bag"
       },
       "geometry": {
         "coordinates": [
-          134.0700449250309,
-          34.30876309468549
+          134.0488535154261,
+          34.3469530073818
         ],
         "type": "Point"
       }
@@ -30,12 +32,13 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "生涯学習センター まなびCAN",
         "marker-symbol": "book"
       },
       "geometry": {
         "coordinates": [
-          134.05402116731406,
-          34.345552839190034
+          134.05363813389624,
+          34.345499412931716
         ],
         "type": "Point"
       }
