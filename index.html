@@ -96,11 +96,7 @@
       <div class="banner-description">一般社団法人「街角に音楽を@香川」主催の同イベント。2015（平成27）年から毎年開催し、サンポート高松をはじめ、市内各所で音楽ステージを開いてきた。</div>
     </a>
   </div>
-  <div id="map" data-navigation-control="off"></div>
-  <div class="icons">
-    <img id="search-button" class="search" src="./img/search.svg" alt="search icon">
-    <img class="point" src="./img/point.svg" alt="point icon">
-  </div>
+  <div id="map" data-navigation-control="off" data-geolocate-control=""></div>
   <div id="list">
     <label id="list-close"><span></span></label>
     <div id="list-content">
@@ -257,8 +253,49 @@
     src="https://cdn.geolonia.com/v1/embed?geolonia-api-key=09cde899b70241ef958de8e2193c2b5a"></script>
   <script>
 
-  const contentIds = ['content1', 'content2', 'search', 'search-result']
-  const elements = contentIds.map(id => document.getElementById(id));
+    const contentIds = ['content1', 'content2', 'search', 'search-result']
+    const elements = contentIds.map(id => document.getElementById(id));
+
+    class SearchControl {
+
+      map;
+      container;
+
+      onAdd(map) {
+
+        this.map = map;
+
+        this.container = document.createElement('div');
+        this.container.className = 'maplibregl-ctrl maplibregl-ctrl-group';
+
+        const img = document.createElement('img');
+        img.id = 'search-button'
+        img.src = `./img/search.svg`;
+        img.alt = '検索';
+
+        img.addEventListener('click', () => {
+          list.style.height = '60vh';
+          listCloseButton.style.display = 'flex';
+          displayTargetElement('search');
+        });
+
+        this.container.appendChild(img);
+
+        return this.container;
+
+      }
+
+      onRemove() {
+
+        if (this.container && this.container.parentNode) {
+
+          this.container.parentNode.removeChild(this.container);
+          this.container = undefined;
+
+        }
+
+      }
+    }
 
     const displayTargetElement = (targetId) => {
       elements.forEach(element => {
@@ -279,6 +316,9 @@
       style: './style.json',
       localIdeographFontFamily: 'sans-serif',
     });
+
+    map.addControl(new window.geolonia.GeolocateControl(), 'bottom-right');
+    map.addControl(new SearchControl(), 'bottom-right');
 
     map.on('load', async () => {
 
@@ -305,14 +345,14 @@
           }
         }
       })
-      
+
     });
 
     const closeButton = document.getElementById('banner-close');
     closeButton.addEventListener('click', () => {
       document.getElementById('banner').style.display = 'none';
     });
-    
+
     const list = document.getElementById('list');
     const listContent = document.getElementById('list-content');
     const listCloseButton = document.getElementById('list-close');
@@ -332,12 +372,6 @@
       event.stopPropagation();
     });
 
-    const searchButton = document.getElementById('search-button');
-    searchButton.addEventListener('click', () => {
-      list.style.height = '60vh';
-      listCloseButton.style.display = 'flex';
-      displayTargetElement('search');
-    });
 
     const searchResult = document.getElementById('submit-button');
     searchResult.addEventListener('click', () => {
