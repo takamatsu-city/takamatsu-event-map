@@ -498,16 +498,6 @@ header,
   flex-direction: column;
 }
 
-.icons img {
-  width: 40px;
-  background-color: #ffffff;
-  margin: 10px;
-  padding: 10px;
-  border-radius: 40px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-}
-
 #search {
   text-align: center;
 }
@@ -684,4 +674,36 @@ header,
   border: 1px solid var(--header-color);
   color: var(--header-color);
   background-color: #ffffff;
+}
+
+.maplibregl-ctrl-group:not(:empty) {
+  box-shadow: none!important;
+  background-color: transparent;
+}
+
+.maplibregl-ctrl-group button:focus:only-child {
+  border-radius: 60px!important;
+}
+
+button.maplibregl-ctrl-geolocate {
+  width: 60px!important;
+  height: 60px!important;
+  background-color: #ffffffff!important;
+  border-radius: 60px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.maplibregl-ctrl-geolocate .maplibregl-ctrl-icon {
+  background-image: url('./img//point.svg')!important;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: block;
+  height: 70%!important;
+  width: 70%!important;
+  margin: auto;
+  position: absolute;
+  top: 10px;
+  right: 11px;
 }
