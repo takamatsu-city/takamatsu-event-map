@@ -98,7 +98,7 @@
   </div>
   <div id="map" data-navigation-control="off"></div>
   <div class="icons">
-    <img class="search" src="./img/search.svg" alt="search icon">
+    <img id="search-button" class="search" src="./img/search.svg" alt="search icon">
     <img class="point" src="./img/point.svg" alt="point icon">
   </div>
   <div id="list">
@@ -163,17 +163,110 @@
           </div>
         </div>
       </div>
+      <div id="search" style="display: none;">
+        <div class="content-title"><i class="fa-solid fa-calendar-days"></i>開催日から探す</div>
+        <div class="radio-button-group mts">
+          <div class="item">
+            <input type="radio" name="button-group" class="radio-button" value="1" id="button1" checked />
+            <label for="button1">今日</label>
+          </div>
+          <div class="item">
+            <input type="radio" name="button-group" class="radio-button" value="2" id="button2" />
+            <label for="button2">明日</label>
+          </div>
+          <div class="item">
+            <input type="radio" name="button-group" class="radio-button" value="3" id="button3" />
+            <label for="button3">今週末</label>
+          </div>
+        </div>
+        <div class="keyword-container">
+          <input id="keyword" type="text" placeholder="キーワードで絞り込み">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <button id="submit-button">絞り込み<i class="fa-solid fa-chevron-right"></i></button>
+      </div>
+      <div id="search-result">
+        <div class="list-header">
+          <div class="list-header-inner">
+            <img src="./img/sports.svg" alt="sports icon">
+            <div class="list-header-title">
+              <div class="list-header-title-main">スポーツ・ウェルネス</div>
+              <div class="list-header-title-sub">4件見つかりました</div>
+            </div>
+          </div>
+          <div class="category-content">
+            <div class="category-label active">音楽</div>
+            <div class="category-label">ミュージック</div>
+            <div class="category-label">ブルーフェス</div>
+          </div>
+        </div>
+        <div class="list-section">
+          <div class="list-title">BOULANGERIE PATISSERIE Risum（ブーランジェリー パティスリー リズム）</div>
+          <div class="list-sub-title">スポーツ・ウェルネス</div>
+          <div class="list-period">2022.05.05-2022.05.05</div>
+          <ul>
+            <li>
+              <img src="./img/time.svg" alt="time icon">
+              <div>14:00~ 19:00</div>
+            </li>
+            <li>
+              <img src="./img/place.svg" alt="place icon">
+              <div>サンポート高松 多目的広場 石のステージ</div>
+            </li>
+            <li>
+              <img src="./img/transport.svg" alt="transport icon">
+              <div>JR高松駅から徒歩3分</div>
+            </li>
+            <li>
+              <div class="icon-container"><img src="./img/price.svg" alt="price icon">1,500円</div>
+              <div class="icon-container"><img src="./img/target.svg" alt="target icon">家族</div>
+            </li>
+          </ul>
+        </div>
+        <div class="list-section">
+          <div class="list-title">BOULANGERIE PATISSERIE Risum（ブーランジェリー パティスリー リズム）</div>
+          <div class="list-sub-title">スポーツ・ウェルネス</div>
+          <div class="list-period">2022.05.05-2022.05.05</div>
+          <ul>
+            <li>
+              <img src="./img/time.svg" alt="time icon">
+              <div>14:00~ 19:00</div>
+            </li>
+            <li>
+              <img src="./img/place.svg" alt="place icon">
+              <div>サンポート高松 多目的広場 石のステージ</div>
+            </li>
+            <li>
+              <img src="./img/transport.svg" alt="transport icon">
+              <div>JR高松駅から徒歩3分</div>
+            </li>
+            <li>
+              <div class="icon-container"><img src="./img/price.svg" alt="price icon">1,500円</div>
+              <div class="icon-container"><img src="./img/target.svg" alt="target icon">家族</div>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
   <script type="text/javascript"
     src="https://cdn.geolonia.com/v1/embed?geolonia-api-key=09cde899b70241ef958de8e2193c2b5a"></script>
   <script>
 
-    const listContent1 = document.getElementById('content1');
-    const listContent2 = document.getElementById('content2');
+  const contentIds = ['content1', 'content2', 'search', 'search-result']
+  const elements = contentIds.map(id => document.getElementById(id));
 
-    listContent1.style.display = 'block';
-    listContent2.style.display = 'none';
+    const displayTargetElement = (targetId) => {
+      elements.forEach(element => {
+        if (element.id === targetId) {
+          element.style.display = 'block';
+        } else {
+          element.style.display = 'none';
+        }
+      });
+    }
+
+    displayTargetElement('content1');
 
     const map = new geolonia.Map({
       container: 'map',
@@ -187,6 +280,8 @@
 
       map.on('click', (e) => {
 
+        listContent.classList.remove('search-result');
+
         const features = map.queryRenderedFeatures(e.point);
         if (features.length > 0) {
           const feature = features[0];
@@ -194,14 +289,15 @@
 
           if (layerId === 'takamatsuarea') {
             list.style.height = '60vh';
-            listContent1.style.display = 'none';
-            listContent2.style.display = 'block';
             listCloseButton.style.display = 'flex';
+
+            displayTargetElement('content2');
+
           } else {
             list.style.height = '10vh';
-            listContent1.style.display = 'block';
-            listContent2.style.display = 'none';
             listCloseButton.style.display = 'none';
+
+            displayTargetElement('content1');
           }
         }
       })
@@ -212,8 +308,9 @@
     closeButton.addEventListener('click', () => {
       document.getElementById('banner').style.display = 'none';
     });
-
+    
     const list = document.getElementById('list');
+    const listContent = document.getElementById('list-content');
     const listCloseButton = document.getElementById('list-close');
 
     list.addEventListener('click', () => {
@@ -224,9 +321,25 @@
     listCloseButton.addEventListener('click', () => {
       list.style.height = '10vh';
       listCloseButton.style.display = 'none';
-      listContent1.style.display = 'block';
-      listContent2.style.display = 'none';
+      displayTargetElement('content1');
+
+      listContent.classList.remove('search-result');
+
       event.stopPropagation();
+    });
+
+    const searchButton = document.getElementById('search-button');
+    searchButton.addEventListener('click', () => {
+      list.style.height = '60vh';
+      listCloseButton.style.display = 'flex';
+      displayTargetElement('search');
+    });
+
+    const searchResult = document.getElementById('submit-button');
+    searchResult.addEventListener('click', () => {
+      listCloseButton.style.display = 'flex';
+      listContent.classList.add('search-result');
+      displayTargetElement('search-result');
     });
 
   </script>
