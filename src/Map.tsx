@@ -40,14 +40,14 @@ const Component = (props: Props) => {
     const setSearchPage = () => {
       props.setIsPage('search');
     }
-    
+
     map.addControl(new SearchControl(setSearchPage), 'bottom-right');
 
     map.on('load', () => {
 
     })
     
-  });
+  }, []);
 
   return (
     <>
