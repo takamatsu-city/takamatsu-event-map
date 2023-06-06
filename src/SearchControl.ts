@@ -15,11 +15,11 @@ class SearchControl {
     img.src = `./img/search.svg`;
     img.alt = '検索';
 
-    // img.addEventListener('click', () => {
+    img.addEventListener('click', () => {
       // list.style.height = '60vh';
       // listCloseButton.style.display = 'flex';
       // displayTargetElement('search');
-    // });
+    });
 
     this.container.appendChild(img);
 
