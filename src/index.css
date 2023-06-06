@@ -601,6 +601,10 @@ header,
   height: 16px;
 }
 
+#search-result {
+  margin: -30px;
+}
+
 #search-result .list-header {
   padding: 30px;
   flex-direction: column;

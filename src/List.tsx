@@ -5,7 +5,7 @@ import Search from './ListContent/Search';
 import SearchResults from './ListContent/SearchResults';
 
 const Content = (props: any) => {
-  const { isPage } = props;
+  let { isPage } = props;
 
   const listRef: React.MutableRefObject<HTMLDivElement| null> = useRef(null);
 
