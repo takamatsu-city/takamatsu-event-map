@@ -351,12 +351,12 @@ header,
   cursor: pointer;
 }
 
-#list::-webkit-scrollbar {
-  display: none;
+#list.open {
+  height: 60vh;
 }
 
-#list.active {
-  height: 55vh;
+#list::-webkit-scrollbar {
+  display: none;
 }
 
 #list::before {
