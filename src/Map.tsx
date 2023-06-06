@@ -31,7 +31,7 @@ const Component = () => {
 
   return (
     <>
-      <div style={style} ref={mapContainer}/>
+      <div style={style} ref={mapContainer} data-navigation-control="off"/>
     </>
   );
 }
