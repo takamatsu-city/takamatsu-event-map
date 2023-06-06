@@ -5,7 +5,7 @@ import SearchResults from './ListContent/SearchResults';
 
 const Content = (props: any) => {
   // const {} = props;
-
+  
   return (
     <>
       <div id="list">
