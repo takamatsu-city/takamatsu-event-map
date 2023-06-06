@@ -16,11 +16,12 @@ const style = {
 
 type Props = {
   setIsPage: React.Dispatch<React.SetStateAction<string | null>>;
+  listRef: React.MutableRefObject<HTMLDivElement| null>;
 }
 
 const Component = (props: Props) => {
 
-  const { setIsPage } = props;
+  const { setIsPage, listRef } = props;
   const mapContainer = React.useRef(null);
 
   React.useEffect(() => {
@@ -39,14 +40,19 @@ const Component = (props: Props) => {
     // @ts-ignore
     map.addControl(new window.geolonia.GeolocateControl(), 'bottom-right');
 
-    const setSearchPage = () => { setIsPage('search'); }
+    const setSearchPage = () => { 
+      setIsPage('search');
+      if (listRef.current && !listRef.current.classList.contains('open')) {
+        listRef.current.classList.add('open');
+      }
+    }
     map.addControl(new SearchControl(setSearchPage), 'bottom-right');
 
     map.on('load', () => {
-      
+
     })
     
-  }, [setIsPage]);
+  }, [listRef, setIsPage]);
 
   return (
     <>

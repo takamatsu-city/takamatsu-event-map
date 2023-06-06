@@ -21,9 +21,7 @@ class SearchControl {
     img.alt = '検索';
 
     img.addEventListener('click', () => {
-
       this.callback();
-      
     });
 
     this.container.appendChild(img);

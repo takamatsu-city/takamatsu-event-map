@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Header from './Header';
 import Banner from './Banner';
 import Map from './Map';
@@ -7,6 +7,7 @@ import './App.css';
 
 function App() {
   const [isPage, setIsPage] = useState<string | null>(null);
+  const listRef: React.MutableRefObject<HTMLDivElement| null> = useRef(null);
   
   return (
     <div className="App">
@@ -14,9 +15,12 @@ function App() {
       <Banner />
       <Map
         setIsPage={setIsPage}
+        listRef={listRef}
       />
       <List
+        setIsPage={setIsPage}
         isPage={isPage}
+        listRef={listRef}
       />
     </div>
   );
