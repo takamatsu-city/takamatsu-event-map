@@ -19,6 +19,8 @@ type Props = {
 }
 
 const Component = (props: Props) => {
+
+  const { setIsPage } = props;
   const mapContainer = React.useRef(null);
 
   React.useEffect(() => {
@@ -38,7 +40,7 @@ const Component = (props: Props) => {
     map.addControl(new window.geolonia.GeolocateControl(), 'bottom-right');
 
     const setSearchPage = () => {
-      props.setIsPage('search');
+      setIsPage('search');
     }
 
     map.addControl(new SearchControl(setSearchPage), 'bottom-right');
@@ -47,7 +49,7 @@ const Component = (props: Props) => {
 
     })
     
-  }, []);
+  }, [setIsPage]);
 
   return (
     <>
