@@ -4,7 +4,11 @@ import MarkerDetail from './ListContent/MarkerDetail';
 import Search from './ListContent/Search';
 import SearchResults from './ListContent/SearchResults';
 
-const Content = (props: any) => {
+type Props = {
+  isPage: string | null;
+}
+
+const Content = (props: Props) => {
   let { isPage } = props;
 
   const listRef: React.MutableRefObject<HTMLDivElement| null> = useRef(null);

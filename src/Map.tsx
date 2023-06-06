@@ -14,7 +14,11 @@ const style = {
 } as React.CSSProperties;
 
 
-const Component = () => {
+type Props = {
+  setIsPage: React.Dispatch<React.SetStateAction<string | null>>;
+}
+
+const Component = (props: Props) => {
   const mapContainer = React.useRef(null);
 
   React.useEffect(() => {
@@ -32,7 +36,12 @@ const Component = () => {
 
     // @ts-ignore
     map.addControl(new window.geolonia.GeolocateControl(), 'bottom-right');
-    map.addControl(new SearchControl(), 'bottom-right');
+
+    const setSearchPage = () => {
+      props.setIsPage('search');
+    }
+    
+    map.addControl(new SearchControl(setSearchPage), 'bottom-right');
 
     map.on('load', () => {
 

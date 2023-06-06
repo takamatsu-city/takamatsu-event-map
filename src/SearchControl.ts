@@ -2,6 +2,11 @@ class SearchControl {
 
   map: any | undefined;
   container: HTMLElement | undefined;
+  callback: any | undefined;
+
+  constructor(callback: any) {
+    this.callback = callback;
+  }
 
   onAdd(map: any) {
 
@@ -16,9 +21,9 @@ class SearchControl {
     img.alt = '検索';
 
     img.addEventListener('click', () => {
-      // list.style.height = '60vh';
-      // listCloseButton.style.display = 'flex';
-      // displayTargetElement('search');
+
+      this.callback();
+      
     });
 
     this.container.appendChild(img);

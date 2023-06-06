@@ -417,7 +417,8 @@ header,
   align-items: center;
 }
 
-#search-result .icon-container:last-child {
+#search-result .icon-container:last-child,
+#new-events .icon-container:last-child {
   margin-left: 100px;
 }
 
@@ -601,14 +602,10 @@ header,
   height: 16px;
 }
 
-#search-result {
+#search-result, 
+#new-events 
+{
   margin: -30px;
-}
-
-#search-result .list-header {
-  padding: 30px;
-  flex-direction: column;
-  align-items: flex-start;
 }
 
 #search-result .list-header {
@@ -617,26 +614,44 @@ header,
   align-items: flex-start;
 }
 
-#search-result .list-header img {
+#new-events .list-header {
+  padding: 30px;
+  flex-direction: row;
+  align-items: center;
+}
+
+#search-result .list-header img, 
+#new-events .list-header img
+{
   width: 40px;
   margin-right: 15px;
 }
 
-#search-result .list-header .list-header-inner {
+#search-result .list-header .list-header-inner, 
+#new-events .list-header .list-header-inner
+{
   display: flex;
 }
 
-#search-result .list-header-title-main {
+#search-result .list-header-title-main, 
+#new-events .list-header-title-main
+{
   font-weight: 700;
   font-size: 18px;
 }
 
-#search-result .list-sub-title, #search-result .list-header-title-sub {
+#search-result .list-sub-title,
+#search-result .list-header-title-sub,
+#new-events .list-sub-title,
+#new-events .list-header-title-sub
+{
   font-size: 12px;
   color: #808080;
 }
 
-#search-result .list-section {
+#search-result .list-section,
+#new-events .list-section
+{
   border-top: 1px solid var(--header-color);
 }
 
@@ -644,20 +659,25 @@ header,
   padding: 0;
 }
 
-#search-result .list-section {
+#search-result .list-section,
+#new-events .list-section {
   padding: 20px 30px;
 }
 
-#search-result .list-section ul {
+#search-result .list-section ul,
+#new-events .list-section ul {
+
   margin: 0;
 }
 
-#search-result .category-content {
+#search-result .category-content,
+#new-events .category-content {
   display: flex;
   margin: 20px 0;
 }
 
-#search-result .category-label {
+#search-result .category-label,
+#new-events .category-label {
   background-color: #E5E5E5;
   font-size: 12px;
   padding: 4px 20px;
@@ -665,7 +685,9 @@ header,
   margin-right: 10px;
 }
 
-#search-result .category-label.active {
+#search-result .category-label.active,
+#new-events .category-label.active {
+
   border: 1px solid var(--header-color);
   color: var(--header-color);
   background-color: #ffffff;
