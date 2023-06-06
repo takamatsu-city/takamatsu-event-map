@@ -46,22 +46,22 @@ export default function Header() {
                 <div className="social-icons-title">SOCIAL</div>
                 <ul>
                   <li>
-                    <a href="" target="_blank" rel="noopener noreferrer">
+                    <a href="./" target="_blank" rel="noopener noreferrer">
                       <img src="./img/facebook.png" alt="facebook" />
                     </a>
                   </li>
                   <li>
-                    <a href="" target="_blank" rel="noopener noreferrer">
+                    <a href="./" target="_blank" rel="noopener noreferrer">
                       <img src="./img/twitter.png" alt="twitter" />
                     </a>
                   </li>
                   <li>
-                    <a href="" target="_blank" rel="noopener noreferrer">
+                    <a href="./" target="_blank" rel="noopener noreferrer">
                       <img src="./img/line.png" alt="line" />
                     </a>
                   </li>
                   <li>
-                    <a href="" target="_blank" rel="noopener noreferrer">
+                    <a href="./" target="_blank" rel="noopener noreferrer">
                       <img src="./img/instagram.png" alt="instagram" />
                     </a>
                   </li>
