@@ -18,9 +18,10 @@ const Component = () => {
   React.useEffect(() => {
     const map = new window.geolonia.Map({
       container: mapContainer.current,
-      zoom: 10,
-      hash: true,
-      style: "geolonia/basic",
+      zoom: 13.81,
+      center: [134.04937, 34.34965],
+      style: `${process.env.PUBLIC_URL}/style.json`,
+      localIdeographFontFamily: 'sans-serif'
     })
 
     map.on('load', () => {
