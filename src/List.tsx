@@ -13,18 +13,23 @@ const Content = (props: Props) => {
 
   const listRef: React.MutableRefObject<HTMLDivElement| null> = useRef(null);
 
-  const listHandler = () => {
+  const openListHandler = () => {
     if (listRef.current && !listRef.current.classList.contains('open')) {
       listRef.current.classList.add('open');
-    } else {
-      listRef.current?.classList.remove('open');
+    }
+  }
+
+  const closeListHandler = (event:any) => {
+    if (listRef.current && listRef.current.classList.contains('open')) {
+      listRef.current.classList.remove('open');
+      event.stopPropagation();
     }
   }
 
   return (
     <>
-      <div id="list" ref={listRef} onClick={listHandler}>
-        <label id="list-close"><span></span></label>
+      <div id="list" ref={listRef} onClick={openListHandler}>
+        <label id="list-close" onClick={closeListHandler}><span></span></label>
         <div id="list-content">
           {!isPage &&  <NewEvents />}
           {isPage === 'marker' && <MarkerDetail />}

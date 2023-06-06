@@ -39,14 +39,11 @@ const Component = (props: Props) => {
     // @ts-ignore
     map.addControl(new window.geolonia.GeolocateControl(), 'bottom-right');
 
-    const setSearchPage = () => {
-      setIsPage('search');
-    }
-
+    const setSearchPage = () => { setIsPage('search'); }
     map.addControl(new SearchControl(setSearchPage), 'bottom-right');
 
     map.on('load', () => {
-
+      
     })
     
   }, [setIsPage]);

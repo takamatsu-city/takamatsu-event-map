@@ -293,6 +293,7 @@ header,
   top: 10px;
   right: 10px;
   padding: 5px;
+  cursor: pointer;
 }
 
 #list-close {
@@ -300,6 +301,10 @@ header,
   right: 20px;
   display: none;
   z-index: 5;
+}
+
+.open #list-close {
+  display: flex;
 }
 
 #banner-close span,
@@ -353,6 +358,7 @@ header,
 
 #list.open {
   height: 60vh;
+  cursor: auto;
 }
 
 #list::-webkit-scrollbar {
