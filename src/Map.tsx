@@ -38,7 +38,6 @@ const Component = (props: Props) => {
       // @ts-ignore
       style: `${process.env.PUBLIC_URL}/style.json`,
       localIdeographFontFamily: 'sans-serif',
-      hash: true,
     })
 
     // @ts-ignore
