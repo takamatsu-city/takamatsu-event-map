@@ -21,6 +21,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build:geojson": "node ./bin/build-geojson.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
