@@ -624,6 +624,8 @@ header,
   padding: 30px;
   flex-direction: row;
   align-items: center;
+  box-sizing: border-box;
+  height: 10vh;
 }
 
 #search-result .list-header img, 
