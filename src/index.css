@@ -418,6 +418,10 @@ header,
   display: block;
 }
 
+#list .list-section {
+  cursor: pointer;
+}
+
 .icon-container {
   display: flex;
   align-items: center;
