@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import formatDate from './utils/formatDate';
-import { Feature } from 'geojson';
+import { Feature,  } from 'geojson';
 
 type Props = {
   events: Feature[],
@@ -9,8 +9,7 @@ type Props = {
 const Content = (props: Props) => {
   const { events } = props;
   const [isOpen, setIsOpen] = useState(true);
-  const [event, setEvent] = useState<Feature | null>(null);
-  const [displayEvents, setDisplayEvents] = useState<Feature[]>([]);
+  const [event, setEvent] = useState<any | null>(null);
 
   const closeHandler = () => {
     setIsOpen(false);
@@ -25,43 +24,21 @@ const Content = (props: Props) => {
       return event.properties.banner_flg === "1"
     })
 
-    setEvent(displayEvents[0]);
-    setDisplayEvents(displayEvents);
+    if (!displayEvents || displayEvents.length === 0) return;
 
+    // @ts-ignore
+    setEvent(displayEvents[0].properties);
   }, [events]);
-
-  setInterval(() => {
-
-    if (displayEvents.length === 0) return;
-
-    let currentIndex
-
-    if (event) {
-      currentIndex = displayEvents.indexOf(event);
-    } else {
-      currentIndex = 0;
-    }
-
-    const nextIndex = currentIndex + 1;
-    const nextEvent = displayEvents[nextIndex];
-
-    if (nextEvent) {
-      setEvent(nextEvent);
-    } else {
-      setEvent(displayEvents[0]);
-    }
-
-  }, 5000);
 
   return (
     <>
       {
-        (isOpen && event && event.properties) && <div id="banner">
+        (isOpen && event) && <div id="banner">
           <label id="banner-close" onClick={closeHandler}><span></span></label>
-          <a href={event.properties.url} target="_blank" rel="noopener noreferrer">
-            {event.properties.event_name && <div className="banner-title">{event.properties.event_name}</div>}
-            {(event.properties.start_date && event.properties.end_date) && <div className="banner-period">{`${formatDate(event.properties.start_date)}-${formatDate(event.properties.end_date)}`}</div>}
-            {event.properties.description && <div className="banner-description">{event.properties.description}</div>}
+          <a href={event.url} target="_blank" rel="noopener noreferrer">
+            {event.event_name && <div className="banner-title">{event.event_name}</div>}
+            {(event.start_date && event.end_date) && <div className="banner-period">{`${formatDate(event.start_date)}-${formatDate(event.end_date)}`}</div>}
+            {event.description && <div className="banner-description">{event.description}</div>}
           </a>
         </div>
       }
