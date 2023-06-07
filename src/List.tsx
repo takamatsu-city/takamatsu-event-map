@@ -2,15 +2,17 @@ import NewEvents from './ListContent/NewEvents';
 import MarkerDetail from './ListContent/MarkerDetail';
 import Search from './ListContent/Search';
 import SearchResults from './ListContent/SearchResults';
+import { Feature } from 'geojson';
 
 type Props = {
   isPage: string | null;
   listRef: React.MutableRefObject<HTMLDivElement| null>;
+  events: Feature[],
   setIsPage: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
 const Content = (props: Props) => {
-  let { isPage, listRef, setIsPage } = props;
+  const { isPage, listRef, events, setIsPage } = props;
 
   const openListHandler = () => {
     if (listRef.current && !listRef.current.classList.contains('open')) {
@@ -32,7 +34,7 @@ const Content = (props: Props) => {
         <label id="list-close" onClick={closeListHandler}><span></span></label>
         <div id="list-content">
           {!isPage &&  <NewEvents />}
-          {isPage === 'marker' && <MarkerDetail />}
+          {isPage === 'marker' && <MarkerDetail events={events} />}
           {isPage === 'search' && <Search />}
           {isPage === 'searchResults' && <SearchResults />}
         </div>

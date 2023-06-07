@@ -462,6 +462,10 @@ header,
   margin-top: 30px;
 }
 
+.list-footer-content a {
+  text-decoration: none;
+}
+
 .list-footer-content .box {
   border: 1px solid var(--header-color);
   padding: 10px 11px;
