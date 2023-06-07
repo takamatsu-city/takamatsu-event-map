@@ -32,6 +32,16 @@ const Content = (props: Props) => {
 
     return (startDate <= today && today <= endDate);
   });
+  
+
+  // start_date でソート
+  progressEvents.sort((a, b) => {
+    // @ts-ignore
+    const aDate = new Date(a.properties.start_date);
+    // @ts-ignore
+    const bDate = new Date(b.properties.start_date);
+    return aDate.getTime() - bDate.getTime();
+  });
 
   return (
     <>
