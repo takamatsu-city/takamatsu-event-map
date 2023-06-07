@@ -37,7 +37,8 @@ const Component = (props: Props) => {
       center: [134.04937, 34.34965],
       // @ts-ignore
       style: `${process.env.PUBLIC_URL}/style.json`,
-      localIdeographFontFamily: 'sans-serif'
+      localIdeographFontFamily: 'sans-serif',
+      hash: true,
     })
 
     // @ts-ignore
@@ -76,7 +77,7 @@ const Component = (props: Props) => {
 
   return (
     <>
-      <div style={style} ref={mapContainer} data-navigation-control="off"/>
+      <div style={style} ref={mapContainer} data-navigation-control="off" data-gesture-handling="off"/>
     </>
   );
 }
