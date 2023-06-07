@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import NewEvents from './ListContent/NewEvents';
 import MarkerDetail from './ListContent/MarkerDetail';
 import Search from './ListContent/Search';
@@ -8,11 +9,13 @@ type Props = {
   isPage: string | null;
   listRef: React.MutableRefObject<HTMLDivElement| null>;
   events: Feature[],
+  clickedEvent: Feature | null;
   setIsPage: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
 const Content = (props: Props) => {
-  const { isPage, listRef, events, setIsPage } = props;
+  const { isPage, listRef, events, clickedEvent, setIsPage } = props;
+  const [eventDetail, setEventDetail] = useState<Feature | null>(null);
 
   const openListHandler = () => {
     if (listRef.current && !listRef.current.classList.contains('open')) {
@@ -33,9 +36,9 @@ const Content = (props: Props) => {
       <div id="list" ref={listRef} onClick={openListHandler}>
         <label id="list-close" onClick={closeListHandler}><span></span></label>
         <div id="list-content">
-          {!isPage &&  <NewEvents events={events} isPage={isPage} setIsPage={setIsPage}/>}
-          {isPage === 'progressEventDetail' && <MarkerDetail events={events} />}
-          {isPage === 'marker' && <MarkerDetail events={events} />}
+          {!isPage &&  <NewEvents events={events} setIsPage={setIsPage} setEventDetail={setEventDetail}/>}
+          {isPage === 'progressEventDetail' && <MarkerDetail event={eventDetail} />}
+          {isPage === 'marker' && <MarkerDetail event={clickedEvent} />}
           {isPage === 'search' && <Search />}
           {isPage === 'searchResults' && <SearchResults />}
         </div>
