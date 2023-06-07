@@ -33,7 +33,8 @@ const Content = (props: Props) => {
       <div id="list" ref={listRef} onClick={openListHandler}>
         <label id="list-close" onClick={closeListHandler}><span></span></label>
         <div id="list-content">
-          {!isPage &&  <NewEvents />}
+          {!isPage &&  <NewEvents events={events} isPage={isPage} setIsPage={setIsPage}/>}
+          {isPage === 'progressEventDetail' && <MarkerDetail events={events} />}
           {isPage === 'marker' && <MarkerDetail events={events} />}
           {isPage === 'search' && <Search />}
           {isPage === 'searchResults' && <SearchResults />}
