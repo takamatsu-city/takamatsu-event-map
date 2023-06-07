@@ -1,6 +1,7 @@
 import { Feature } from 'geojson';
 import { EventProps } from '../utils/types';
 import formatDate from '../utils/formatDate';
+import { targetIcon } from '../utils/targetIcon';
 
 type Props = {
   events: Feature[];
@@ -91,7 +92,7 @@ const Content = (props: Props) => {
                       event.price_basic && event.target && (
                         <li>
                           <div className="icon-container"><img src="./img/price.svg" alt="price icon" />{event.price_basic}</div>
-                          <div className="icon-container"><img src="./img/target.svg" alt="target icon" />{event.target}</div>
+                          <div className="icon-container"><img src={targetIcon(event.target)} alt="target icon" />{event.target}</div>
                         </li>
                       )
                     }
