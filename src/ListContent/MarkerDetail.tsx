@@ -1,6 +1,7 @@
 import { Feature } from 'geojson';
 import { EventProps } from '../utils/types';
 import formatDate from '../utils/formatDate';
+import { targetIcon } from '../utils/targetIcon';
 
 type Props = {
   event: Feature | null;
@@ -78,7 +79,7 @@ const Content = (props: Props) => {
           {
             eventData.target && (
               <li>
-                <img src="./img/target.svg" alt="target icon" />
+                <img src={targetIcon(eventData.target)} alt="target icon" />
                 <div>{eventData.target}</div>
               </li>
             )
