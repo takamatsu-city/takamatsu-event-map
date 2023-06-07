@@ -49,6 +49,24 @@ const Component = (props: Props) => {
     map.addControl(new SearchControl(setSearchPage), 'bottom-right');
 
     map.on('load', (e: any) => {
+
+      map.on('click', (e: any) => {
+
+
+        const features = map.queryRenderedFeatures(e.point);
+        if (features.length > 0) {
+          const feature = features[0];
+          const layerId = feature.layer.id;
+
+          if (layerId === 'takamatsuarea') {
+
+            setIsPage('marker');
+            if (listRef.current && !listRef.current.classList.contains('open')) {
+              listRef.current.classList.add('open');
+            }
+          }
+        }
+      })
     })
     
   }, [listRef, setIsPage]);
