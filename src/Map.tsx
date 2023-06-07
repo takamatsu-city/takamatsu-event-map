@@ -67,6 +67,12 @@ const Component = (props: Props) => {
             if (listRef.current && !listRef.current.classList.contains('open')) {
               listRef.current.classList.add('open');
             }
+          } else {
+
+            setIsPage(null);
+            if (listRef.current && listRef.current.classList.contains('open')) {
+              listRef.current.classList.remove('open');
+            }
           }
         }
       })
