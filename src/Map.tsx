@@ -9,13 +9,6 @@ declare global {
   }
 }
 
-const style = {
-  position: 'absolute',
-  width: '100vw',
-  height: '100vh',
-} as React.CSSProperties;
-
-
 type Props = {
   setIsPage: React.Dispatch<React.SetStateAction<string | null>>;
   setEvents: React.Dispatch<React.SetStateAction<Feature[]>>;
@@ -77,7 +70,7 @@ const Component = (props: Props) => {
 
   return (
     <>
-      <div style={style} ref={mapContainer} data-navigation-control="off" data-gesture-handling="off"/>
+      <div ref={mapContainer} data-navigation-control="off" data-gesture-handling="off"/>
     </>
   );
 }
