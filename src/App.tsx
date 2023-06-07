@@ -24,7 +24,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Banner />
+      <Banner events={events}/>
       <Map
         setIsPage={setIsPage}
         setEvents={setEvents}
