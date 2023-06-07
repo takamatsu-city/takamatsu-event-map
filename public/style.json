@@ -8424,17 +8424,10 @@
         "icon-size": 0.5,
         "icon-allow-overlap": true,
         "icon-image": [
-          "coalesce",
+          "image",
           [
-            "image",
-            [
-              "get",
-              "marker-symbol"
-            ]
-          ],
-          [
-            "image",
-            "circle"
+            "get",
+            "marker-symbol"
           ]
         ]
       }
