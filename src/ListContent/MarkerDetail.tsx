@@ -1,63 +1,117 @@
-const Content = (props: any) => {
-  // const {} = props;
+import { Feature } from 'geojson';
+import { EventProps } from '../utils/types';
+import formatDate from '../utils/formatDate';
+
+type Props = {
+  events: Feature[];
+}
+
+const Content = (props: Props) => {
+  const { events } = props;
+
+  if (!events || events.length === 0) return <></>;
+
+  // @ts-ignore
+  const event: EventProps = events[0].properties;
 
   return (
     <>
       <div id="content2">
-        <div className="list-title">BOULANGERIE PATISSERIE Risum（ブーランジェリー パティスリー リズム）</div>
-        <div className="list-period">2022.05.05-2022.05.05</div>
+        {event.event_name && <div className="list-title">{event.event_name}</div>}
+        {(event.start_date && event.end_date) && <div className="list-period">{`${formatDate(event.start_date)}-${formatDate(event.end_date)}`}</div>}
         <ul>
-          <li>
-            <img src="./img/time.svg" alt="time icon" />
-            <div>14:00~ 19:00</div>
-          </li>
-          <li>
-            <img src="./img/place.svg" alt="place icon" />
-            <div>サンポート高松多目的広場 石のステージ</div>
-          </li>
-          <li>
-            <img src="./img/transport.svg" alt="transport icon" />
-            <div>JR高松駅から徒歩3分</div>
-          </li>
-          <li className="display-block">
-            <div className="list-description">
-              一般社団法人「街角に音楽を@香川」主催の同イベント。
-              2015（平成27)年から毎年開催し、サンポート高松をはじめ、市内各所で音楽ステージを開いてきた。
-            </div>
-            <div>
-              <div>
-                <span className="list-label">主催：</span>MUSIC BLUE TAKAMATSU 実行委員会
-              </div>
-              <div>
-                <span className="list-label">連絡先：</span>087-xxx-xxxx
-              </div>
-            </div>
-          </li>
-          <li className="display-block">
-            <div className="icon-container"><img src="./img/price.svg" alt="price icon" />1,500円</div>
-            <span className="list-price-description">大人1名1500円、子供1名500円(18歳以下）、65歳以上1名1000円</span>
-          </li>
-          <li>
-            <img src="./img/target.svg" alt="target icon" />
-            <div>家族</div>
-          </li>
-          <li>
-            <img src="./img/address.svg" alt="address icon" />
-            <div>香川県高松市サンポート3-33</div>
-          </li>
+          {
+            event.start_time && event.end_time && (
+              <li>
+                <img src="./img/time.svg" alt="time icon" />
+                <div>{`${event.start_time} ~ ${event.end_time}`}</div>
+              </li>
+            )
+          }
+          {
+            event.place_name && (
+              <li>
+                <img src="./img/place.svg" alt="place icon" />
+                <div>{event.place_name}</div>
+              </li>
+            )
+          }
+          {
+            event.access && (
+              <li>
+                <img src="./img/transport.svg" alt="transport icon" />
+                <div>{event.access}</div>
+              </li>
+            )
+          }
+          {
+            event.description && (
+              <li className="display-block">
+                <div className="list-description">{event.description}</div>
+                <div>
+                  {
+                    event.organizer && (
+                      <div>
+                        <span className="list-label">主催：</span>{event.organizer}
+                      </div>
+                    )
+                  }
+                  {
+                    event.telephone_number && (
+                      <div>
+                        <span className="list-label">連絡先：</span>{event.telephone_number}
+                      </div>
+                    )
+                  }
+                </div>
+              </li>
+            )
+          }
+          {
+            event.price_basic && (
+              <li className="display-block">
+                <div className="icon-container"><img src="./img/price.svg" alt="price icon" />1,500円</div>
+                {event.price_detail && <span className="list-price-description">{event.price_detail}</span>}
+              </li>
+            )
+          }
+          {
+            event.target && (
+              <li>
+                <img src="./img/target.svg" alt="target icon" />
+                <div>{event.target}</div>
+              </li>
+            )
+          }
+          {
+            event.address && (
+              <li>
+                <img src="./img/address.svg" alt="address icon" />
+                <div>香川県高松市サンポート3-33</div>
+              </li>
+            )
+          }
         </ul>
         <div className="list-footer-content">
-          <div className="box">
-            <img src="./img/walk.svg" alt="walk icon" />
-            <div>ここへ行く</div>
-          </div>
-          <div className="box walk">
-            <img src="./img/compass.svg" alt="compass icon" />
-            <div>Webサイト</div>
-          </div>
-          <div className="circle">
-            <img src="./img/share.svg" alt="share icon" />
-          </div>
+          {
+            event.lon && event.lat && (
+              <a href={`https://www.google.com/maps/search/?api=1&query=${event.lat}%2C${event.lon}`} target="_blank" rel="noopener noreferrer">
+                <div className="box">
+                  <img src="./img/walk.svg" alt="walk icon" />
+                  <div>ここへ行く</div>
+                </div>
+              </a>
+            )
+          }
+          {
+            event.url && (
+              <a href={event.url} target="_blank" rel="noopener noreferrer">
+                <div className="box walk">
+                  <img src="./img/compass.svg" alt="compass icon" />
+                  <div>Webサイト</div>
+                </div>
+              </a>)
+          }
         </div>
       </div>
     </>

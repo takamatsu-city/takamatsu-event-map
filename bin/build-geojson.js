@@ -31,8 +31,14 @@ csv2geojson.csv2geojson(csv, {
   }
 
   geojson.features.forEach((feature) => {
+
     if (feature.properties.category) {
       feature.properties["marker-symbol"] = categoryIconMapping[feature.properties.category];
+    }
+
+    if (feature.geometry.type === 'Point') {
+      feature.properties.lat = feature.geometry.coordinates[1];
+      feature.properties.lon = feature.geometry.coordinates[0];
     }
   });
   
