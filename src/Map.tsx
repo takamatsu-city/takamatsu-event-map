@@ -48,8 +48,7 @@ const Component = (props: Props) => {
     }
     map.addControl(new SearchControl(setSearchPage), 'bottom-right');
 
-    map.on('load', () => {
-
+    map.on('load', (e: any) => {
     })
     
   }, [listRef, setIsPage]);
