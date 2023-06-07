@@ -30,7 +30,18 @@ csv2geojson.csv2geojson(csv, {
     return;
   }
 
-  geojson.features.forEach((feature) => {
+  const filteredFeatures = geojson.features = geojson.features.filter(feature => {
+    const isPublish = '0'
+    // TODO: キー名 nyuryoku_flg から BOM（U+feff） を削除
+    return feature.properties.nyuryoku_flg === isPublish || feature.properties["﻿nyuryoku_flg"] === isPublish;
+  });
+
+  if (filteredFeatures.length === 0) {
+    console.error('No data');
+    return;
+  }
+
+  filteredFeatures.forEach((feature) => {
 
     if (feature.properties.category) {
       feature.properties["marker-symbol"] = categoryIconMapping[feature.properties.category];
@@ -41,7 +52,8 @@ csv2geojson.csv2geojson(csv, {
       feature.properties.lon = feature.geometry.coordinates[0];
     }
   });
+
+  geojson.features = filteredFeatures;
   
-  // TODO: キー名 nyuryoku_flg から BOM（U+feff） を削除
   fs.writeFileSync(geojsonPath, JSON.stringify(geojson));
 });
