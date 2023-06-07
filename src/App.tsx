@@ -9,6 +9,7 @@ import './App.css';
 function App() {
   const [isPage, setIsPage] = useState<string | null>(null);
   const [events, setEvents] = useState<Feature[]>([]);
+  const [clickedEvent, setClickedEvent] = useState<Feature | null>(null);
   const listRef: React.MutableRefObject<HTMLDivElement | null> = useRef(null);
 
   useEffect(() => {
@@ -27,7 +28,7 @@ function App() {
       <Banner events={events}/>
       <Map
         setIsPage={setIsPage}
-        setEvents={setEvents}
+        setClickedEvent={setClickedEvent}
         listRef={listRef}
       />
       <List
@@ -35,6 +36,7 @@ function App() {
         isPage={isPage}
         listRef={listRef}
         events={events}
+        clickedEvent={clickedEvent}
       />
     </div>
   );
