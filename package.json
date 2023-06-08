@@ -1,5 +1,5 @@
 {
-  "name": "my-map",
+  "name": "takamatsu-area-map",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -48,8 +48,7 @@
     "@types/geojson": "^7946.0.10",
     "csv2geojson": "^5.1.2",
     "papaparse": "^5.4.1",
-    "read-excel-file": "^5.6.1",
-    "tailwindcss": "^3.2.4"
+    "read-excel-file": "^5.6.1"
   },
   "homepage": "./"
 }
