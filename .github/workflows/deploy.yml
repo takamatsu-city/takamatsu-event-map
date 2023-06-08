@@ -21,6 +21,12 @@ jobs:
       - name: Build the app
         run: npm run build
 
+      - name: Add comment to show CSV diff
+        run: npm run csvdiff
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: "${{ github.repository_owner }}/${{ github.event.repository.name }}"
+
       - name: Test
         run: npm test
 
