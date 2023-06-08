@@ -40,7 +40,7 @@ const excel2csv = async (excelPath) => {
 };
 
 (async () => {
-  const excelPath = join(__dirname, '../src/data.xlsm');
+  const excelPath = join(__dirname, '../data.xlsm');
   const csvPath = join(__dirname, '../public/data.csv');
 
   const csv = await excel2csv(excelPath);
