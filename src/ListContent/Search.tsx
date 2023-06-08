@@ -27,17 +27,17 @@ const Content = (props: Props) => {
       <div id="search">
         <form method="post" onSubmit={handleSubmit}>
           <div className="content-title"><i className="fa-solid fa-calendar-days"></i>開催日から探す</div>
-          <div className="radio-button-group mts">
+          <div className="checkbox-group mts">
             <div className="item">
-              <input type="radio" name="eventDate" className="radio-button" value="1" id="today" defaultChecked/>
+              <input type="checkbox" name="eventDate" className="checkbox" value="1" id="today" defaultChecked />
               <label htmlFor="today">今日</label>
             </div>
             <div className="item">
-              <input type="radio" name="eventDate" className="radio-button" value="2" id="tomorrow" />
+              <input type="checkbox" name="eventDate" className="checkbox" value="2" id="tomorrow" />
               <label htmlFor="tomorrow">明日</label>
             </div>
             <div className="item">
-              <input type="radio" name="eventDate" className="radio-button" value="3" id="weekend" />
+              <input type="checkbox" name="eventDate" className="checkbox" value="3" id="weekend" />
               <label htmlFor="weekend">今週末</label>
             </div>
           </div>

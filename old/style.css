@@ -504,24 +504,24 @@ header,
   font-size: 20px;
 }
 
-.radio-button-group {
+.checkbox-group {
   display: flex;
   justify-content: center;
   margin: 20px 10px;
 }
 
-.radio-button-group .item {
+.checkbox-group .item {
   width: 100px;
 }
 
-.radio-button-group .radio-button {
+.checkbox-group .checkbox {
   position: absolute;
   width: 1px;
   height: 1px;
   opacity: 0;
 }
 
-.radio-button-group .radio-button+label {
+.checkbox-group .checkbox+label {
   padding: 7px;
   cursor: pointer;
   margin-right: -2px;
@@ -534,17 +534,17 @@ header,
   /* border: 1px solid #CCC; */
 }
 
-.radio-button-group .item:first-of-type .radio-button+label {
+.checkbox-group .item:first-of-type .checkbox+label {
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 }
 
-.radio-button-group .item:last-of-type .radio-button+label {
+.checkbox-group .item:last-of-type .checkbox+label {
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
 }
 
-.radio-button-group .radio-button:checked+label {
+.checkbox-group .checkbox:checked+label {
   background-color: var(--header-color);
   color: #FFF;
 }
