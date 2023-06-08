@@ -1,8 +1,6 @@
 const formatDate = (date: string) => {
-
-  const dateArray = date.split('/');
-
-  return `${dateArray[0]}.${dateArray[1]}.${dateArray[2]}`;
+  const [year, month, day] = date.split('T')[0].split('-');
+  return `${year}.${month}.${day}`;
 }
 
 export default formatDate;
