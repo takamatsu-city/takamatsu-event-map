@@ -1,65 +1,66 @@
 import { Feature } from 'geojson';
 import { EventProps } from '../utils/types';
 import formatDate from '../utils/formatDate';
+import { targetIcon } from '../utils/targetIcon';
 
 type Props = {
-  events: Feature[];
+  event: Feature | null;
 }
 
 const Content = (props: Props) => {
-  const { events } = props;
+  const { event } = props;
 
-  if (!events || events.length === 0) return <></>;
+  if (!event) return <></>;
 
   // @ts-ignore
-  const event: EventProps = events[0].properties;
+  const eventData: EventProps = event.properties;
 
   return (
     <>
       <div id="content2">
-        {event.event_name && <div className="list-title">{event.event_name}</div>}
-        {(event.start_date && event.end_date) && <div className="list-period">{`${formatDate(event.start_date)}-${formatDate(event.end_date)}`}</div>}
+        {eventData.event_name && <div className="list-title">{eventData.event_name}</div>}
+        {(eventData.start_date && eventData.end_date) && <div className="list-period">{`${formatDate(eventData.start_date)}-${formatDate(eventData.end_date)}`}</div>}
         <ul>
           {
-            event.start_time && event.end_time && (
+            eventData.start_time && eventData.end_time && (
               <li>
                 <img src="./img/time.svg" alt="time icon" />
-                <div>{`${event.start_time} ~ ${event.end_time}`}</div>
+                <div>{`${eventData.start_time} ~ ${eventData.end_time}`}</div>
               </li>
             )
           }
           {
-            event.place_name && (
+            eventData.place_name && (
               <li>
                 <img src="./img/place.svg" alt="place icon" />
-                <div>{event.place_name}</div>
+                <div>{eventData.place_name}</div>
               </li>
             )
           }
           {
-            event.access && (
+            eventData.access && (
               <li>
                 <img src="./img/transport.svg" alt="transport icon" />
-                <div>{event.access}</div>
+                <div>{eventData.access}</div>
               </li>
             )
           }
           {
-            event.description && (
+            eventData.description && (
               <li className="display-block">
-                <div className="list-description">{event.description}</div>
+                <div className="list-description">{eventData.description}</div>
                 <div>
                   {
-                    event.organizer && (
+                    eventData.organizer && (
                       <div>
-                        <span className="list-label">主催：</span>{event.organizer}
+                        <span className="list-label">主催：</span>{eventData.organizer}
                       </div>
                     )
                   }
                   {
-                    event.telephone_number && (
+                    eventData.telephone_number && (
                       <div>
-                        <span className="list-label">連絡先：</span>{event.telephone_number}
+                        <span className="list-label">連絡先：</span>{eventData.telephone_number}
                       </div>
                     )
                   }
@@ -68,23 +69,23 @@ const Content = (props: Props) => {
             )
           }
           {
-            event.price_basic && (
+            eventData.price_basic && (
               <li className="display-block">
                 <div className="icon-container"><img src="./img/price.svg" alt="price icon" />1,500円</div>
-                {event.price_detail && <span className="list-price-description">{event.price_detail}</span>}
+                {eventData.price_detail && <span className="list-price-description">{eventData.price_detail}</span>}
               </li>
             )
           }
           {
-            event.target && (
+            eventData.target && (
               <li>
-                <img src="./img/target.svg" alt="target icon" />
-                <div>{event.target}</div>
+                <img src={targetIcon(eventData.target)} alt="target icon" />
+                <div>{eventData.target}</div>
               </li>
             )
           }
           {
-            event.address && (
+            eventData.address && (
               <li>
                 <img src="./img/address.svg" alt="address icon" />
                 <div>香川県高松市サンポート3-33</div>
@@ -94,8 +95,8 @@ const Content = (props: Props) => {
         </ul>
         <div className="list-footer-content">
           {
-            event.lon && event.lat && (
-              <a href={`https://www.google.com/maps/search/?api=1&query=${event.lat}%2C${event.lon}`} target="_blank" rel="noopener noreferrer">
+            eventData.lon && eventData.lat && (
+              <a href={`https://www.google.com/maps/search/?api=1&query=${eventData.lat}%2C${eventData.lon}`} target="_blank" rel="noopener noreferrer">
                 <div className="box">
                   <img src="./img/walk.svg" alt="walk icon" />
                   <div>ここへ行く</div>
@@ -104,8 +105,8 @@ const Content = (props: Props) => {
             )
           }
           {
-            event.url && (
-              <a href={event.url} target="_blank" rel="noopener noreferrer">
+            eventData.url && (
+              <a href={eventData.url} target="_blank" rel="noopener noreferrer">
                 <div className="box walk">
                   <img src="./img/compass.svg" alt="compass icon" />
                   <div>Webサイト</div>

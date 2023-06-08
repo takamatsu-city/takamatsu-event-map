@@ -12,19 +12,19 @@ declare global {
 const style = {
   position: 'absolute',
   width: '100vw',
-  height: '100vh',
+  height: '100%',
 } as React.CSSProperties;
 
 
 type Props = {
   setIsPage: React.Dispatch<React.SetStateAction<string | null>>;
-  setEvents: React.Dispatch<React.SetStateAction<Feature[]>>;
+  setClickedEvent: React.Dispatch<React.SetStateAction<Feature | null>>;
   listRef: React.MutableRefObject<HTMLDivElement | null>;
 }
 
 const Component = (props: Props) => {
 
-  const { setIsPage, listRef, setEvents } = props;
+  const { setIsPage, listRef, setClickedEvent } = props;
   const mapContainer = React.useRef(null);
 
   React.useEffect(() => {
@@ -37,7 +37,7 @@ const Component = (props: Props) => {
       center: [134.04937, 34.34965],
       // @ts-ignore
       style: `${process.env.PUBLIC_URL}/style.json`,
-      localIdeographFontFamily: 'sans-serif'
+      localIdeographFontFamily: 'sans-serif',
     })
 
     // @ts-ignore
@@ -62,21 +62,27 @@ const Component = (props: Props) => {
 
           if (layerId === 'takamatsuarea') {
 
-            setEvents([feature]);
+            setClickedEvent(feature);
             setIsPage('marker');
             if (listRef.current && !listRef.current.classList.contains('open')) {
               listRef.current.classList.add('open');
+            }
+          } else {
+
+            setIsPage(null);
+            if (listRef.current && listRef.current.classList.contains('open')) {
+              listRef.current.classList.remove('open');
             }
           }
         }
       })
     })
     
-  }, [listRef, setEvents, setIsPage]);
+  }, [listRef, setClickedEvent, setIsPage]);
 
   return (
     <>
-      <div style={style} ref={mapContainer} data-navigation-control="off"/>
+      <div style={style} ref={mapContainer} data-navigation-control="off" data-gesture-handling="off"/>
     </>
   );
 }
