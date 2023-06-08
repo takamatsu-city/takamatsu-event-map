@@ -1,5 +1,47 @@
-const Content = (props: any) => {
-  // const {} = props;
+import { useEffect, useState } from 'react';
+import { Feature } from 'geojson';
+
+type Props = {
+  queryDate: string;
+  queryKeyword: string;
+  events: Feature[];
+}
+
+const Content = (props: Props) => {
+  const { queryDate, queryKeyword, events } = props;
+
+  const [filteredEvents, setFilteredEvents] = useState<Feature[]>([]);
+
+  useEffect(() => {
+    const filteredEvents = events.filter((event) => {
+      const eventDate = new Date(event.properties?.date as string);
+      const today = new Date();
+      const tomorrow = new Date();
+      tomorrow.setDate(today.getDate() + 1);
+      const weekend = new Date();
+      weekend.setDate(today.getDate() + (6 - today.getDay() + 7) % 7 + 1);
+
+      if (queryDate === '1') {
+        return eventDate.getDate() === today.getDate();
+      } else if (queryDate === '2') {
+        return eventDate.getDate() === tomorrow.getDate();
+      } else if (queryDate === '3') {
+        return eventDate.getDate() === weekend.getDate();
+      } else {
+        return true;
+      }
+
+    }).filter((event) => {
+      const keyword = queryKeyword.toLowerCase();
+      const title = event.properties?.title as string;
+      const description = event.properties?.description as string;
+      const category = event.properties?.category as string;
+
+      return title.toLowerCase().includes(keyword) || description.toLowerCase().includes(keyword) || category.toLowerCase().includes(keyword);
+    });
+
+    setFilteredEvents(filteredEvents);
+  }, [queryDate, queryKeyword, events]);
 
   return (
     <>

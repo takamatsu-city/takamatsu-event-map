@@ -16,6 +16,9 @@ type Props = {
 const Content = (props: Props) => {
   const { isPage, listRef, events, clickedEvent, setIsPage } = props;
   const [eventDetail, setEventDetail] = useState<Feature | null>(null);
+  const [queryDate, setQueryDate] = useState<string>('1');
+  const [queryKeyword, setQueryKeyword] = useState<string>('');
+
 
   const openListHandler = () => {
     if (listRef.current && !listRef.current.classList.contains('open')) {
@@ -39,8 +42,8 @@ const Content = (props: Props) => {
           {!isPage &&  <NewEvents events={events} setIsPage={setIsPage} setEventDetail={setEventDetail}/>}
           {isPage === 'progressEventDetail' && <MarkerDetail event={eventDetail} />}
           {isPage === 'marker' && <MarkerDetail event={clickedEvent} />}
-          {isPage === 'search' && <Search />}
-          {isPage === 'searchResults' && <SearchResults />}
+          {isPage === 'search' && <Search setIsPage={setIsPage} setQueryDate={setQueryDate} setQueryKeyword={setQueryKeyword} />}
+          {isPage === 'searchResults' && <SearchResults  queryDate={queryDate} queryKeyword={queryKeyword} events={events}/>}
         </div>
       </div>
     </>
