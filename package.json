@@ -20,7 +20,9 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "npm run build:excel2csv && npm run build:geojson && react-scripts build",
+    "build:excel2csv": "node ./bin/build-excel2csv.js",
+    "build:geojson": "node ./bin/build-geojson.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -45,6 +47,8 @@
   "devDependencies": {
     "@types/geojson": "^7946.0.10",
     "csv2geojson": "^5.1.2",
+    "papaparse": "^5.4.1",
+    "read-excel-file": "^5.6.1",
     "tailwindcss": "^3.2.4"
   },
   "homepage": "./"
