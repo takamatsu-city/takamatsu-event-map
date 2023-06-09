@@ -23,6 +23,8 @@ cat <<__COMMENT1__ > "${TMP}/comment.txt"
 \`\`\`diff
 $(diff --unified "./current.csv" "./new.csv")
 \`\`\`
+
+※現行のデータから、赤の行が削除され、緑の行が追加されます。
 __COMMENT1__
 
 if [[ -n "$(diff "./current.csv" "./new.csv")" ]]; then
