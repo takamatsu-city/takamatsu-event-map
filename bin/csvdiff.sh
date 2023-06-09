@@ -10,6 +10,7 @@ PR_ID=$(echo $GITHUB_REF | sed -e 's/[^0-9]//g')
 
 if [[ -z "${PR_ID}" ]]; then
   echo "Generating CSV diff skipped because this action is not triggered by Pull Request."
+  exit 0
 fi
 
 curl -sS --output "${TMP}/current.csv" https://geolonia.github.io/takamatsu-area-map/data.csv
