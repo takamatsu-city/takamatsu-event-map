@@ -40,6 +40,9 @@ const Component = (props: Props) => {
       // @ts-ignore
       style: `${process.env.PUBLIC_URL}/style.json`,
       localIdeographFontFamily: 'sans-serif',
+      hash: true,
+      minZoom: 11,
+      maxZoom: 19,
     })
 
     // @ts-ignore

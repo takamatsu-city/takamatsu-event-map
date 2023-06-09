@@ -34,7 +34,7 @@ Object.keys(areaMapping).forEach((key) => {
 
 // takamatsu-fill-area id を持つレイヤーに対して、filter を設定する。
 style.layers.find((layer) => {
-  if (layer.id === 'takamatsu-fill-area') {
+  if (layer.id === 'takamatsu-fill-area' || layer.id === 'takamatsu-are-outline') {
     layer.filter = filter;
     return true;
   }

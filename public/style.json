@@ -8421,11 +8421,28 @@
       }
     },
     {
+      "id": "takamatsu-are-outline",
+      "type": "line",
+      "source": "takamatsu-fill-area",
+      "paint": {
+        "line-color": "rgba(252, 145, 53, 0.6)",
+        "line-width": 3
+      },
+      "filter": [
+        "in",
+        "id",
+        "takamatsu_square",
+        "takamatsu_pedestrian",
+        "takamatsu_station_square",
+        "takamatsu_tamamo_park"
+      ]
+    },
+    {
       "id": "takamatsu-fill-area",
       "type": "fill",
       "source": "takamatsu-fill-area",
       "paint": {
-        "fill-color": "rgba(252, 145, 53, 0.3)"
+        "fill-color": "rgba(252, 145, 53, 0.4)"
       },
       "filter": [
         "in",
