@@ -36,7 +36,9 @@ const excel2csv = async (excelPath) => {
     return false;
   });
 
-  return Papa.unparse(rows, { quotes: true, skipEmptyLines: true });
+  const csv = Papa.unparse(rows, { quotes: true, skipEmptyLines: true });
+
+  return csv.endsWith("\r\n") || csv.endsWith("\n") ? csv : csv + "\r\n";
 };
 
 (async () => {
