@@ -22,6 +22,10 @@
     "takamatsuarea": {
       "type": "geojson",
       "data": "./data.geojson"
+    },
+    "takamatsu-fill-area": {
+      "type": "geojson",
+      "data": "./area.geojson"
     }
   },
   "sprite": "https://api.geolonia.com/v1/sprites/gsi",
@@ -8415,6 +8419,22 @@
         "text-halo-width": 1.2,
         "text-halo-color": "rgba(255,255,255,0.8)"
       }
+    },
+    {
+      "id": "takamatsu-fill-area",
+      "type": "fill",
+      "source": "takamatsu-fill-area",
+      "paint": {
+        "fill-color": "rgba(252, 145, 53, 0.3)"
+      },
+      "filter": [
+        "in",
+        "id",
+        "takamatsu_square",
+        "takamatsu_pedestrian",
+        "takamatsu_station_square",
+        "takamatsu_tamamo_park"
+      ]
     },
     {
       "id": "takamatsuarea",
