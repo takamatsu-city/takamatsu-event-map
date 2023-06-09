@@ -262,12 +262,15 @@ header,
 .banner-title,
 .list-title {
   font-weight: 700;
-  font-size: 14px;
+  font-size: 16px;
   margin-right: 25px;
 }
 
+.banner-title {
+  font-size: 18px;
+}
+
 .list-title {
-  font-size: 16px;
   word-break: keep-all;
 }
 
@@ -456,6 +459,7 @@ header,
 
 .list-header .title {
   font-weight: 600;
+  font-size: 18px;
 }
 
 .fa-list {
