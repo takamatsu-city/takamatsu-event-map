@@ -22,7 +22,6 @@ const thisWeekendEvent = {
   }
 }
 
-// const querykeys = ['today', 'tomorrow', 'weekend'];
 const events = [todayEvent, tommorowEvent, thisWeekendEvent];
 
 test('今日に開催しているイベントを取得する', () => {
