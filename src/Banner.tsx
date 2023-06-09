@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import formatDate from './utils/formatDate';
-import { Feature,  } from 'geojson';
+import { Feature, } from 'geojson';
 
 type Props = {
   events: Feature[],
@@ -19,15 +19,36 @@ const Content = (props: Props) => {
 
     if (!events || events.length === 0) return;
 
-    const displayEvents = events.filter((event: Feature) => {
+    const bannerEvents = events.filter((event: Feature) => {
       if (!event.properties) return false
       return event.properties.banner_flg === "1"
     })
 
-    if (!displayEvents || displayEvents.length === 0) return;
+    if (!bannerEvents || bannerEvents.length === 0) return;
 
-    // @ts-ignore
-    setEvent(displayEvents[0].properties);
+
+    if (bannerEvents.length === 1) {
+
+      setEvent(bannerEvents[0].properties);
+
+    } else {
+
+      let index = 0;
+      setEvent(bannerEvents[index].properties);
+
+      setInterval(() => {
+
+        index++;
+
+        if (index >= bannerEvents.length) {
+          index = 0;
+        }
+
+        setEvent(bannerEvents[index].properties);
+
+      }, 5000);
+    }
+
   }, [events]);
 
   return (
