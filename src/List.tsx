@@ -16,7 +16,7 @@ type Props = {
 const Content = (props: Props) => {
   const { isPage, listRef, events, clickedEvent, setIsPage } = props;
   const [eventDetail, setEventDetail] = useState<Feature | null>(null);
-  const [queryDate, setQueryDate] = useState<string>('1');
+  const [queryDate, setQueryDate] = useState<string[]>([]);
   const [queryKeyword, setQueryKeyword] = useState<string>('');
 
 

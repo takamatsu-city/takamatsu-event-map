@@ -43,6 +43,15 @@ csv2geojson.csv2geojson(csv, {
 
   filteredFeatures.forEach((feature) => {
 
+    // start_date と end_date のフォーマット 2023-06-06T00:00:00.000Z を 2023-06-06 に変換
+    if (feature.properties.start_date) {
+      feature.properties.start_date = feature.properties.start_date.slice(0, 10);
+    }
+
+    if (feature.properties.end_date) {
+      feature.properties.end_date = feature.properties.end_date.slice(0, 10);
+    }
+
     if (feature.properties.category) {
       feature.properties["marker-symbol"] = categoryIconMapping[feature.properties.category];
     }
@@ -54,6 +63,6 @@ csv2geojson.csv2geojson(csv, {
   });
 
   geojson.features = filteredFeatures;
-  
+
   fs.writeFileSync(geojsonPath, JSON.stringify(geojson));
 });
