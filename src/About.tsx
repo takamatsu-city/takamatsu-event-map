@@ -11,7 +11,7 @@ const Content = () => {
         <img className="image" src={'./logo.svg'} alt="ロゴ"/>
       </div>
 
-      <div className="description">{''}</div>
+      <div className="description">{'たかまつエリアマップ'}</div>
       <div className="qrcode"><Qrcode url={window.location.href}/></div>
       <Share />
     </div>
