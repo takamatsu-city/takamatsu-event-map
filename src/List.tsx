@@ -3,6 +3,7 @@ import NewEvents from './ListContent/NewEvents';
 import MarkerDetail from './ListContent/MarkerDetail';
 import Search from './ListContent/Search';
 import SearchResults from './ListContent/SearchResults';
+import { QueryDate } from './utils/types';
 import { Feature } from 'geojson';
 
 type Props = {
@@ -16,7 +17,7 @@ type Props = {
 const Content = (props: Props) => {
   const { isPage, listRef, events, clickedEvent, setIsPage } = props;
   const [eventDetail, setEventDetail] = useState<Feature | null>(null);
-  const [queryDate, setQueryDate] = useState<string[]>([]);
+  const [queryDate, setQueryDate] = useState<QueryDate>([]);
   const [queryKeyword, setQueryKeyword] = useState<string>('');
 
 

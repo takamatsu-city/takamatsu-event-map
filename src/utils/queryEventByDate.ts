@@ -1,9 +1,6 @@
 import { Feature } from 'geojson';
 import { today, tomorrow, thisSaturday, nextSunday } from './dates';
-
-type QueryDate = [
-  'today' | 'tomorrow' | 'weekend',
-] | [];
+import { QueryDate } from './types';
 
 export const queryEventByDate = (query: QueryDate, events: Feature[]) => {
 

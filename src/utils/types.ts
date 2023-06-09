@@ -39,3 +39,7 @@ export type EventProps  = {
   lat: number,
   "marker-symbol": string
 }
+
+export type QueryDate = [
+  'today' | 'tomorrow' | 'weekend',
+] | [];

@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react';
+import { queryEventByDate } from '../utils/queryEventByDate';
+import { QueryDate } from '../utils/types';
+
 import { Feature } from 'geojson';
 
 type Props = {
-  queryDate: string[];
+  queryDate: QueryDate;
   queryKeyword: string;
   events: Feature[];
 }
@@ -12,63 +15,22 @@ const Content = (props: Props) => {
 
   const [filteredEvents, setFilteredEvents] = useState<Feature[]>([]);
 
-  // useEffect(() => {
-  //   const filteredEvents = events.filter((event) => {
+  useEffect(() => {
 
-  //     if (queryDate.length === 0) {
-  //       return false
-  //     }
+    const filteredEvents = queryEventByDate(queryDate, events);
 
-  //     const today = new Date();
-  //     today.setHours(0, 0, 0, 0);
-  //     const tomorrow = new Date();
-  //     tomorrow.setDate(today.getDate() + 1);
+    // .filter((event) => {
+    //   const keyword = queryKeyword.toLowerCase();
+    //   const title = event.properties?.title as string;
+    //   const description = event.properties?.description as string;
+    //   const category = event.properties?.category as string;
 
-  //     const thisSaturday = new Date();
-  //     thisSaturday.setDate(today.getDate() + (6 - today.getDay()));
-  //     const thisSunday = new Date();
-  //     thisSunday.setDate(today.getDate() + (7 - today.getDay()));
+    //   return title.toLowerCase().includes(keyword) || description.toLowerCase().includes(keyword) || category.toLowerCase().includes(keyword);
+    // });
 
-  //     const startDate = new Date(event.properties?.start_date as string);
-  //     const endDate = new Date(event.properties?.end_date as string);
-
-  //     // チェックされた日にちが、イベントデータの「開始日」と「終了日」の間に含まれるデータを抽出
-  //     if (queryDate.includes('today')) {
-  //       if (startDate <= today && today <= endDate) {
-  //         return true;
-  //       }
-  //     }
-
-  //     if (queryDate.includes('tomorrow')) {
-  //       if (startDate <= tomorrow && tomorrow <= endDate) {
-  //         return true;
-  //       }
-  //     }
-
-  //     if (queryDate.includes('weekend')) {
-  //       if (startDate <= thisSaturday && thisSaturday <= endDate) {
-  //         return true;
-  //       }
-  //       if (startDate <= thisSunday && thisSunday <= endDate) {
-  //         return true;
-  //       }
-  //     }
-
-  //     return false;
-
-  //   })
-  //   // .filter((event) => {
-  //   //   const keyword = queryKeyword.toLowerCase();
-  //   //   const title = event.properties?.title as string;
-  //   //   const description = event.properties?.description as string;
-  //   //   const category = event.properties?.category as string;
-
-  //   //   return title.toLowerCase().includes(keyword) || description.toLowerCase().includes(keyword) || category.toLowerCase().includes(keyword);
-  //   // });
-
-  //   console.log(filteredEvents);
-  //   setFilteredEvents(filteredEvents);
-  // }, [queryDate, queryKeyword, events]);
+    console.log(filteredEvents);
+    setFilteredEvents(filteredEvents);
+  }, [queryDate, queryKeyword, events]);
 
 
   return (

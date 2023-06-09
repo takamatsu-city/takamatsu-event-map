@@ -1,6 +1,8 @@
+import { QueryDate } from '../utils/types';
+
 type Props = {
   setIsPage: React.Dispatch<React.SetStateAction<string | null>>;
-  setQueryDate: React.Dispatch<React.SetStateAction<string[]>>;
+  setQueryDate: React.Dispatch<React.SetStateAction<QueryDate>>;
   setQueryKeyword: React.Dispatch<React.SetStateAction<string>>;
 }
 
@@ -14,10 +16,11 @@ const Content = (props: Props) => {
     const form = e.target;
     const formData = new FormData(form);
 
-    const queryDate: string[] = [];
+    const queryDate: QueryDate = [];
 
     formData.getAll('eventDate').forEach((date) => {
-      queryDate.push(date as string);
+      // @ts-ignore
+      queryDate.push(date);
     });
 
     setQueryDate(queryDate);
