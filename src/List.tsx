@@ -5,17 +5,19 @@ import Search from './ListContent/Search';
 import SearchResults from './ListContent/SearchResults';
 import { QueryDate } from './utils/types';
 import { Feature } from 'geojson';
+import geolonia from '@geolonia/embed';
 
 type Props = {
   isPage: string | null;
   listRef: React.MutableRefObject<HTMLDivElement| null>;
   events: Feature[],
   clickedEvent: Feature | null;
+  mapObject: geolonia.Map | null;
   setIsPage: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
 const Content = (props: Props) => {
-  const { isPage, listRef, events, clickedEvent, setIsPage } = props;
+  const { isPage, listRef, events, clickedEvent, mapObject, setIsPage } = props;
   const [eventDetail, setEventDetail] = useState<Feature | null>(null);
   const [queryDate, setQueryDate] = useState<QueryDate>([]);
   const [queryKeyword, setQueryKeyword] = useState<string>('');
@@ -31,6 +33,7 @@ const Content = (props: Props) => {
     if (listRef.current && listRef.current.classList.contains('open')) {
       listRef.current.classList.remove('open');
       setIsPage(null);
+      mapObject?.setFilter('takamatsuarea', null);
       event.stopPropagation();
     }
   }
@@ -44,7 +47,7 @@ const Content = (props: Props) => {
           {isPage === 'eventDetail' && <MarkerDetail event={eventDetail} />}
           {isPage === 'marker' && <MarkerDetail event={clickedEvent} />}
           {isPage === 'search' && <Search setIsPage={setIsPage} setQueryDate={setQueryDate} setQueryKeyword={setQueryKeyword} />}
-          {isPage === 'searchResults' && <SearchResults  queryDate={queryDate} queryKeyword={queryKeyword} events={events} setIsPage={setIsPage} setEventDetail={setEventDetail} />}
+          {isPage === 'searchResults' && <SearchResults  queryDate={queryDate} queryKeyword={queryKeyword} events={events} setIsPage={setIsPage} setEventDetail={setEventDetail} mapObject={mapObject} />}
         </div>
       </div>
     </>

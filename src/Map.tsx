@@ -1,6 +1,7 @@
 import React from 'react';
 import SearchControl from './SearchControl';
 import { Feature } from 'geojson';
+import geolonia from '@geolonia/embed';
 
 declare global {
   interface Window {
@@ -19,12 +20,13 @@ const style = {
 type Props = {
   setIsPage: React.Dispatch<React.SetStateAction<string | null>>;
   setClickedEvent: React.Dispatch<React.SetStateAction<Feature | null>>;
+  setMapObject: React.Dispatch<React.SetStateAction<geolonia.Map | null>>;
   listRef: React.MutableRefObject<HTMLDivElement | null>;
 }
 
 const Component = (props: Props) => {
 
-  const { setIsPage, listRef, setClickedEvent } = props;
+  const { setIsPage, listRef, setClickedEvent, setMapObject } = props;
   const mapContainer = React.useRef(null);
 
   React.useEffect(() => {
@@ -43,13 +45,15 @@ const Component = (props: Props) => {
     // @ts-ignore
     map.addControl(new window.geolonia.GeolocateControl(), 'bottom-right');
 
-    const setSearchPage = () => { 
+    const setSearchPage = () => {
       setIsPage('search');
       if (listRef.current && !listRef.current.classList.contains('open')) {
         listRef.current.classList.add('open');
       }
     }
     map.addControl(new SearchControl(setSearchPage), 'bottom-right');
+
+    setMapObject(map);
 
     map.on('load', (e: any) => {
 
@@ -70,6 +74,7 @@ const Component = (props: Props) => {
           } else {
 
             setIsPage(null);
+            map.setFilter('takamatsuarea', null);
             if (listRef.current && listRef.current.classList.contains('open')) {
               listRef.current.classList.remove('open');
             }
@@ -77,8 +82,8 @@ const Component = (props: Props) => {
         }
       })
     })
-    
-  }, [listRef, setClickedEvent, setIsPage]);
+
+  }, [listRef, setClickedEvent, setIsPage, setMapObject]);
 
   return (
     <>
