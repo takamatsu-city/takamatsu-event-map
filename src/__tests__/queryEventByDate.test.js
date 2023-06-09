@@ -1,57 +1,52 @@
 import { queryEventByDate } from '../utils/queryEventByDate';
-
-// 現在の日を 2023-06-07 の形式で取得
-const format = (date) => {
-  return date.toISOString().slice(0, 10);
-}
-
-const today = new Date();
-today.setHours(0, 0, 0, 0)
-today.setHours(today.getHours() + 9);
-
-const tomorrow = new Date(today);
-tomorrow.setDate(tomorrow.getDate() + 1);
-
-const thisSaturday = new Date(today);
-thisSaturday.setDate(thisSaturday.getDate() + (6 - thisSaturday.getDay()));
-
-const nextSunday = new Date(thisSaturday);
-nextSunday.setDate(nextSunday.getDate() + 1);
+import { today, tomorrow, thisSaturday, nextSunday } from '../utils/dates';
 
 const todayEvent = {
   properties : {
-    start_date : format(today),
-    end_date : format(today)
+    start_date : today,
+    end_date : today
   }
 }
 
 const tommorowEvent = {
   properties : {
-    start_date : format(tomorrow),
-    end_date : format(tomorrow)
+    start_date : tomorrow,
+    end_date : tomorrow
   }
 }
 
 const thisWeekendEvent = {
   properties : {
-    start_date : format(thisSaturday),
-    end_date : format(nextSunday)
+    start_date : thisSaturday,
+    end_date : nextSunday
   }
 }
 
 // const querykeys = ['today', 'tomorrow', 'weekend'];
 const events = [todayEvent, tommorowEvent, thisWeekendEvent];
 
-// queryKeys で指定された日にちのどれかが、events の start_date と end_date の間にあるかどうかをチェックする。当てはまるイベントオブジェクトを返す。
-
-test('queryEventByDate(today, queryKeys, events) は、events の中に今日の日付があるかどうかをチェックする', () => {
-
+test('今日に開催しているイベントを取得する', () => {
   const query = ['today'];
-  const result = queryEventByDate(today, query, events);
-  expect(result.length).toEqual(1);
+  const result = queryEventByDate(query, events);
+  expect(result).toContain(todayEvent);
 });
 
+test('明日に開催しているイベントを取得する', () => {
+  const query = ['tomorrow'];
+  const result = queryEventByDate(query, events);
+  expect(result).toContain(tommorowEvent);
+});
 
+test('今週末に開催しているイベントを取得する', () => {
+  const query = ['weekend'];
+  const result = queryEventByDate(query, events);
+  expect(result).toContain(thisWeekendEvent);
+});
 
-
-
+test('今日と明日と週末に開催しているイベントを取得する', () => {
+  const query = ['today', 'tomorrow', 'weekend'];
+  const result = queryEventByDate(query, events);
+  expect(result).toContain(todayEvent);
+  expect(result).toContain(tommorowEvent);
+  expect(result).toContain(thisWeekendEvent);
+})
