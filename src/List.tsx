@@ -40,11 +40,11 @@ const Content = (props: Props) => {
       <div id="list" ref={listRef} onClick={openListHandler}>
         <label id="list-close" onClick={closeListHandler}><span></span></label>
         <div id="list-content">
-          {!isPage &&  <NewEvents events={events} setIsPage={setIsPage} setEventDetail={setEventDetail}/>}
-          {isPage === 'progressEventDetail' && <MarkerDetail event={eventDetail} />}
+          {!isPage &&  <NewEvents events={events} setIsPage={setIsPage} setEventDetail={setEventDetail} />}
+          {isPage === 'eventDetail' && <MarkerDetail event={eventDetail} />}
           {isPage === 'marker' && <MarkerDetail event={clickedEvent} />}
           {isPage === 'search' && <Search setIsPage={setIsPage} setQueryDate={setQueryDate} setQueryKeyword={setQueryKeyword} />}
-          {isPage === 'searchResults' && <SearchResults  queryDate={queryDate} queryKeyword={queryKeyword} events={events}/>}
+          {isPage === 'searchResults' && <SearchResults  queryDate={queryDate} queryKeyword={queryKeyword} events={events} setIsPage={setIsPage} setEventDetail={setEventDetail} />}
         </div>
       </div>
     </>
