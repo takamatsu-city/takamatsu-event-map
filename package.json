@@ -46,6 +46,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/preset-typescript": "^7.22.5",
     "@types/geojson": "^7946.0.10",
     "csv2geojson": "^5.1.2",
     "papaparse": "^5.4.1",
