@@ -1,0 +1,22 @@
+a
+{
+  color: #007bff;
+  text-decoration: none;
+}
+
+.app-body
+{
+  height: calc(100% - 62px);
+}
+// Hack for Edge to eliminate calc(env())
+@supports (-ms-ime-align: auto) {
+  .app-body {
+    height: calc(100% - 62px);
+  }
+}
+// Also hack for IE
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .app-body {
+    height: calc(100% - 62px);
+  }
+}
