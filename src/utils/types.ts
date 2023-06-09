@@ -1,4 +1,5 @@
 export type EventProps  = {
+  id: string,
   nyuryoku_flg: boolean,
   prefecture_code?: string,
   no?: string,

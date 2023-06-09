@@ -41,7 +41,11 @@ csv2geojson.csv2geojson(csv, {
     return;
   }
 
-  filteredFeatures.forEach((feature) => {
+  filteredFeatures.forEach((feature, index) => {
+
+    if (!feature.properties.id) {
+      feature.properties.id = `${index}`;
+    }
 
     // start_date と end_date のフォーマット 2023-06-06T00:00:00.000Z を 2023-06-06 に変換
     if (feature.properties.start_date) {

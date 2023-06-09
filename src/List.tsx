@@ -33,6 +33,7 @@ const Content = (props: Props) => {
     if (listRef.current && listRef.current.classList.contains('open')) {
       listRef.current.classList.remove('open');
       setIsPage(null);
+      mapObject?.setFilter('takamatsuarea', null);
       event.stopPropagation();
     }
   }
