@@ -262,12 +262,15 @@ header,
 .banner-title,
 .list-title {
   font-weight: 700;
-  font-size: 14px;
+  font-size: 16px;
   margin-right: 25px;
 }
 
+.banner-title {
+  font-size: 18px;
+}
+
 .list-title {
-  font-size: 16px;
   word-break: keep-all;
 }
 
@@ -456,6 +459,7 @@ header,
 
 .list-header .title {
   font-weight: 600;
+  font-size: 16px;
 }
 
 .fa-list {
@@ -549,7 +553,7 @@ header,
   color: #555;
   display: block;
   text-align: center;
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 700;
   box-sizing: border-box;
 }
@@ -585,6 +589,7 @@ header,
   padding-left: 50px;
   border-radius: 20px;
   width: 200px;
+  font-size: 16px;
 }
 
 #search #submit-button {
