@@ -8425,7 +8425,7 @@
       "type": "line",
       "source": "takamatsu-fill-area",
       "paint": {
-        "line-color": "rgba(252, 145, 53, 0.6)",
+        "line-color": "rgba(252, 145, 53, 0.3)",
         "line-width": 3
       },
       "filter": [
@@ -8442,7 +8442,7 @@
       "type": "fill",
       "source": "takamatsu-fill-area",
       "paint": {
-        "fill-color": "rgba(252, 145, 53, 0.4)"
+        "fill-color": "rgba(252, 145, 53, 0.2)"
       },
       "filter": [
         "in",
