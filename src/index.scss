@@ -1,7 +1,14 @@
 :root {
   --header-color: #007AC3;
-  ;
 }
+
+#root {
+  background: url(../public/background.jpg) no-repeat center center fixed;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}
+
 * {
   font-family: 'Hiragino Kaku Gothic Pro','ヒラギノ角ゴ Pro W3','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
 }
@@ -14,11 +21,38 @@ body {
   width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+}
+
+.branding
+{
+  text-align: center;
+  .logo
+  {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 72px;
+    max-width: 280px;
+    line-height: 0.9;
+    text-shadow: 1px 2px 3px #808080;
+    margin: auto;
+  }
+  .link
+  {
+    font-size: 1.2rem;
+  }
+  .image
+  {
+    width: 180px;
+    height: 180px;
+    display: block;
+    margin: auto;
+    margin-bottom: 20px;
+  }
 }
 
 header,
 .menu-header {
-  position: fixed;
+  position: absolute;
   top: 0;
   z-index: 90;
   width: 100%;
@@ -98,8 +132,8 @@ header,
 
 .menu-content {
   width: 100%;
-  height: 100%;
-  position: fixed;
+  height: 673px;
+  position: absolute;
   top: 0;
   left: 100%;
   z-index: 90;

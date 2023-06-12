@@ -1,4 +1,4 @@
-const { queryEventByKeyword } = require('../utils/queryEventByKeyword');
+const { queryEventByKeyword } = require('../App/utils/queryEventByKeyword');
 
 const event1 = {
   properties : {
