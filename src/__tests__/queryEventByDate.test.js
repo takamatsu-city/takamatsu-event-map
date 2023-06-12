@@ -1,5 +1,5 @@
 import { queryEventByDate } from '../App/utils/queryEventByDate';
-import { today, tomorrow, thisSaturday, nextSunday } from '../utils/dates';
+import { today, tomorrow, thisSaturday, nextSunday } from '../App/utils/dates';
 
 const todayEvent = {
   properties : {
