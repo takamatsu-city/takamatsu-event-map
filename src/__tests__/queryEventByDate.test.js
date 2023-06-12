@@ -1,4 +1,4 @@
-import { queryEventByDate } from '../utils/queryEventByDate';
+import { queryEventByDate } from '../App/utils/queryEventByDate';
 import { today, tomorrow, thisSaturday, nextSunday } from '../utils/dates';
 
 const todayEvent = {
