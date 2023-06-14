@@ -60,7 +60,7 @@ const Content = (props: Props) => {
                   {
                     eventData.telephone_number && (
                       <div>
-                        <span className="list-label">連絡先：</span><a href={`tel:+81-${eventData.telephone_number}`}>{eventData.telephone_number}</a>
+                        <span className="list-label">連絡先：</span><a href={`tel:${eventData.telephone_number}`}>{eventData.telephone_number}</a>
                       </div>
                     )
                   }
