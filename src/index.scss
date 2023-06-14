@@ -69,6 +69,10 @@ header,
   font-weight: 700;
 }
 
+.menu-subtitle {
+  font-size: 14px;
+}
+
 .menu-btn {
   position: absolute;
   right: 10px;
@@ -189,6 +193,24 @@ header,
 
 .menu-content ul li details[open]::before {
   transform: rotate(135deg);
+}
+
+.menu-content details a {
+  color: #ffffff;
+}
+
+.menu-content details ol {
+  padding-left: 1em;
+}
+
+.menu-content details li {
+  font-size: 12px;
+  font-weight: normal;
+  list-style-position: inside;
+  padding-left: 1em;
+  text-indent: -1em;
+  border: none;
+  list-style-type: decimal;
 }
 
 #menu-btn-check:checked~.menu-content {
