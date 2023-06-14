@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import SearchControl from './SearchControl';
 import { Feature } from 'geojson';
 import geolonia from '@geolonia/embed';
+import { queryEventByDate } from './utils/queryEventByDate';
+import { showEventsOnMap } from './utils/showEventsOnMap';
+import { setPolygonFilter } from './utils/setPolygonFilter';
 
 declare global {
   interface Window {
@@ -22,11 +25,13 @@ type Props = {
   setClickedEvent: React.Dispatch<React.SetStateAction<Feature | null>>;
   setMapObject: React.Dispatch<React.SetStateAction<geolonia.Map | null>>;
   listRef: React.MutableRefObject<HTMLDivElement | null>;
+  events: Feature[];
+  mapObject: geolonia.Map | null;
 }
 
 const Component = (props: Props) => {
 
-  const { setIsPage, listRef, setClickedEvent, setMapObject } = props;
+  const { listRef, events, mapObject, setIsPage, setClickedEvent, setMapObject } = props;
   const mapContainer = React.useRef(null);
 
   React.useEffect(() => {
@@ -44,6 +49,8 @@ const Component = (props: Props) => {
       maxZoom: 19,
     })
 
+    setMapObject(map);
+
     // @ts-ignore
     map.addControl(new window.geolonia.GeolocateControl(), 'bottom-right');
 
@@ -55,13 +62,21 @@ const Component = (props: Props) => {
     }
     map.addControl(new SearchControl(setSearchPage), 'bottom-right');
 
-    setMapObject(map);
+  }, [listRef, setIsPage, setMapObject]);
 
-    map.on('load', (e: any) => {
+  useEffect(() => {
 
-      map.on('click', (e: any) => {
+    if (!mapObject) return;
 
-        const features = map.queryRenderedFeatures(e.point);
+    mapObject.on('load', (e: any) => {
+
+      const progressEvents = queryEventByDate(['today'], events);
+      showEventsOnMap(progressEvents, mapObject);
+      setPolygonFilter(progressEvents, mapObject);
+
+      mapObject.on('click', (e: any) => {
+
+        const features = mapObject.queryRenderedFeatures(e.point);
         if (features.length > 0) {
           const feature = features[0];
           const layerId = feature.layer.id;
@@ -76,7 +91,7 @@ const Component = (props: Props) => {
           } else {
 
             setIsPage(null);
-            map.setFilter('takamatsuarea', null);
+            showEventsOnMap(progressEvents, mapObject);
             if (listRef.current && listRef.current.classList.contains('open')) {
               listRef.current.classList.remove('open');
             }
@@ -84,12 +99,11 @@ const Component = (props: Props) => {
         }
       })
     })
-
-  }, [listRef, setClickedEvent, setIsPage, setMapObject]);
+  }, [events, listRef, mapObject, setClickedEvent, setIsPage]);
 
   return (
     <>
-      <div style={style} ref={mapContainer} data-navigation-control="off" data-gesture-handling="off"/>
+      <div style={style} ref={mapContainer} data-navigation-control="off" data-gesture-handling="off" />
     </>
   );
 }

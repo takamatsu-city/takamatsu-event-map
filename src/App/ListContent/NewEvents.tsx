@@ -1,6 +1,6 @@
 import { Feature } from 'geojson';
-import { EventProps } from '../utils/types';
 import EventList from './EventList';
+import { queryEventByDate } from '../utils/queryEventByDate';
 
 type Props = {
   events: Feature[];
@@ -12,21 +12,7 @@ const Content = (props: Props) => {
 
   const { events, setIsPage, setEventDetail } = props;
 
-  const progressEvents = events.filter((event) => {
-
-    // @ts-ignore
-    const properties: EventProps = event.properties;
-
-    if (!properties.start_date || !properties.end_date) return false;
-
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-
-    const startDate = new Date(properties.start_date);
-    const endDate = new Date(properties.end_date);
-
-    return (startDate <= today && today <= endDate);
-  });
+  const progressEvents = queryEventByDate(['today'], events);
 
   return (
     <>
