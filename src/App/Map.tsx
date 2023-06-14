@@ -82,7 +82,7 @@ const Component = (props: Props) => {
           } else {
 
             setIsPage(null);
-            map.setFilter('takamatsuarea', null);
+            showEventsOnMap(progressEvents, map);
             if (listRef.current && listRef.current.classList.contains('open')) {
               listRef.current.classList.remove('open');
             }

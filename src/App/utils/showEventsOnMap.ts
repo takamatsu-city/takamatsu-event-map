@@ -2,7 +2,7 @@ import { EventProps } from "./types"
 import { Feature } from "geojson"
 import { Map } from "@geolonia/embed"
 
-export const showEventsOnMap = (events: Feature[], mapObject: Map) => {
+export const showEventsOnMap = (events: Feature[], mapObject: Map | null) => {
 
   if (!mapObject || mapObject.getLayer('takamatsuarea') === undefined) return;
 

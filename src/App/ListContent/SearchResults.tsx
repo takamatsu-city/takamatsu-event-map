@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import EventList from './EventList';
 import { queryEventByDate } from '../utils/queryEventByDate';
 import { queryEventByKeyword } from '../utils/queryEventByKeyword';
-import { QueryDate, EventProps } from '../utils/types';
+import { showEventsOnMap } from '../utils/showEventsOnMap';
+import { QueryDate } from '../utils/types';
 import { Feature } from 'geojson';
 import geolonia from '@geolonia/embed';
 
@@ -25,19 +26,7 @@ const Content = (props: Props) => {
     const eventsFilterByDate = queryEventByDate(queryDate, events);
     const eventsSearchResult = queryEventByKeyword(queryKeyword, eventsFilterByDate);
     setSearchedEvents(eventsSearchResult);
-
-    if (!mapObject || mapObject.getLayer('takamatsuarea') === undefined) return;
-
-    const ids = eventsSearchResult.map((event) => {
-      const properties = event.properties as EventProps;
-      return properties.id;
-    });
-
-    const filter = ['in', 'id']
-    filter.push(...ids);
-
-    // @ts-ignore
-    mapObject.setFilter('takamatsuarea', filter);
+    showEventsOnMap(eventsSearchResult, mapObject)
 
   }, [queryDate, queryKeyword, events, mapObject]);
 

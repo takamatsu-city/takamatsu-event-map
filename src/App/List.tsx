@@ -36,8 +36,6 @@ const Content = (props: Props) => {
       listRef.current.classList.remove('open');
       setIsPage(null);
 
-      if (!mapObject) return;
-
       const openEvents = queryEventByDate(['today'], events);
       showEventsOnMap(openEvents, mapObject);
 
