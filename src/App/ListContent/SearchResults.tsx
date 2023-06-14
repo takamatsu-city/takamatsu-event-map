@@ -7,6 +7,7 @@ import { setPolygonFilter } from '../utils/setPolygonFilter';
 import { QueryDate } from '../utils/types';
 import { Feature } from 'geojson';
 import geolonia from '@geolonia/embed';
+import bbox from '@turf/bbox';
 
 type Props = {
   queryDate: QueryDate;
@@ -29,6 +30,26 @@ const Content = (props: Props) => {
     setSearchedEvents(eventsSearchResult);
     showEventsOnMap(eventsSearchResult, mapObject)
     setPolygonFilter(eventsSearchResult, mapObject);
+
+    const geojson = {
+      type: 'FeatureCollection',
+      features: eventsSearchResult
+    }
+
+    if (!mapObject) return;
+
+    const targetBbox = bbox(geojson);
+
+    const screenHeight = window.innerHeight;
+
+    const previewHeight = screenHeight - (screenHeight * 0.6);
+    const headerHeight = 100;
+    const padding = 50;
+    const previewCenter = (previewHeight - headerHeight - padding) / 2
+
+    // @ts-ignore
+    mapObject.fitBounds(targetBbox, { padding, offset: [0, -previewCenter] });
+
 
   }, [queryDate, queryKeyword, events, mapObject]);
 
