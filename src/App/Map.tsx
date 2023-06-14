@@ -62,8 +62,8 @@ const Component = (props: Props) => {
 
     map.on('load', (e: any) => {
 
-      const openEvents = queryEventByDate(['today'], events);
-      showEventsOnMap(openEvents, map);
+      const progressEvents = queryEventByDate(['today'], events);
+      showEventsOnMap(progressEvents, map);
 
       map.on('click', (e: any) => {
 
