@@ -19,7 +19,7 @@ type Props = {
 }
 
 const Content = (props: Props) => {
-  const { queryDate, queryKeyword, events, mapObject, setIsPage,  setEventDetail} = props;
+  const { queryDate, queryKeyword, events, mapObject, setIsPage, setEventDetail } = props;
 
   const [searchedEvents, setSearchedEvents] = useState<Feature[]>([]);
 
@@ -40,16 +40,24 @@ const Content = (props: Props) => {
 
     const targetBbox = bbox(geojson);
 
-    const screenHeight = window.innerHeight;
+    const app = document.getElementsByClassName('app')[0]
+    const screenHeight = app.clientHeight;
 
-    const previewHeight = screenHeight - (screenHeight * 0.6);
-    const headerHeight = 100;
+    const listHeightRatio = 0.6;
+    const listHeight = screenHeight * listHeightRatio;
+
+    const headerHeight = 50;
     const padding = 50;
-    const previewCenter = (previewHeight - headerHeight - padding) / 2
 
     // @ts-ignore
-    mapObject.fitBounds(targetBbox, { padding, offset: [0, -previewCenter] });
-
+    mapObject.fitBounds(targetBbox, {
+      padding: {
+        top: padding + headerHeight,
+        bottom: listHeight + padding,
+        left: padding,
+        right: padding
+      }
+    });
 
   }, [queryDate, queryKeyword, events, mapObject]);
 
