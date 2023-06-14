@@ -91,4 +91,8 @@
     position: fixed;
     height: 100%;
   }
+
+  a[href^="tel:"]{
+    pointer-events: auto;
+  }
 }

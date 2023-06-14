@@ -24,6 +24,15 @@ body {
   justify-content: center;
 }
 
+a {
+  color: var(--header-color);
+}
+
+// PC閲覧時には 電話番号リンクを無効化
+a[href^="tel:"]{
+  pointer-events: none;
+}
+
 .branding
 {
   text-align: center;
@@ -820,3 +829,4 @@ button.maplibregl-ctrl-geolocate {
 .maplibregl-ctrl-bottom-right {
   bottom: 10vh !important;
 }
+
