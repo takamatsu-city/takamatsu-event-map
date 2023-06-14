@@ -7,6 +7,7 @@ import { setPolygonFilter } from '../utils/setPolygonFilter';
 import { QueryDate } from '../utils/types';
 import { Feature } from 'geojson';
 import geolonia from '@geolonia/embed';
+import bbox from '@turf/bbox';
 
 type Props = {
   queryDate: QueryDate;
@@ -18,7 +19,7 @@ type Props = {
 }
 
 const Content = (props: Props) => {
-  const { queryDate, queryKeyword, events, mapObject, setIsPage,  setEventDetail} = props;
+  const { queryDate, queryKeyword, events, mapObject, setIsPage, setEventDetail } = props;
 
   const [searchedEvents, setSearchedEvents] = useState<Feature[]>([]);
 
@@ -29,6 +30,34 @@ const Content = (props: Props) => {
     setSearchedEvents(eventsSearchResult);
     showEventsOnMap(eventsSearchResult, mapObject)
     setPolygonFilter(eventsSearchResult, mapObject);
+
+    const geojson = {
+      type: 'FeatureCollection',
+      features: eventsSearchResult
+    }
+
+    if (!mapObject) return;
+
+    const targetBbox = bbox(geojson);
+
+    const app = document.getElementsByClassName('app')[0]
+    const screenHeight = app.clientHeight;
+
+    const listHeightRatio = 0.6;
+    const listHeight = screenHeight * listHeightRatio;
+
+    const headerHeight = 50;
+    const padding = 50;
+
+    // @ts-ignore
+    mapObject.fitBounds(targetBbox, {
+      padding: {
+        top: padding + headerHeight,
+        bottom: listHeight + padding,
+        left: padding,
+        right: padding
+      }
+    });
 
   }, [queryDate, queryKeyword, events, mapObject]);
 

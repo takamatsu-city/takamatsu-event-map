@@ -415,7 +415,7 @@ header,
 #list {
   position: absolute;
   width: 100%;
-  height: 10vh;
+  height: 10%;
   z-index: 3;
   background-color: #ffffff;
   border-top-left-radius: 24px;
@@ -430,7 +430,7 @@ header,
 }
 
 #list.open {
-  height: 60vh;
+  height: 60%;
   cursor: auto;
 }
 
