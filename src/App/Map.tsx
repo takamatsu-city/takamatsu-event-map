@@ -38,8 +38,6 @@ const Component = (props: Props) => {
 
     if (!mapContainer.current) return;
 
-    console.log('hello')
-
     const map = new window.geolonia.Map({
       container: mapContainer.current,
       zoom: 15,
