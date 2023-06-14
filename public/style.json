@@ -8421,12 +8421,15 @@
       }
     },
     {
-      "id": "takamatsu-are-outline",
+      "id": "takamatsu-area-outline",
       "type": "line",
       "source": "takamatsu-fill-area",
       "paint": {
         "line-color": "rgba(252, 145, 53, 0.3)",
         "line-width": 3
+      },
+      "layout": {
+        "visibility": "none"
       },
       "filter": [
         "in",
@@ -8443,6 +8446,9 @@
       "source": "takamatsu-fill-area",
       "paint": {
         "fill-color": "rgba(252, 145, 53, 0.2)"
+      },
+      "layout": {
+        "visibility": "none"
       },
       "filter": [
         "in",

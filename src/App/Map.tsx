@@ -4,6 +4,7 @@ import { Feature } from 'geojson';
 import geolonia from '@geolonia/embed';
 import { queryEventByDate } from './utils/queryEventByDate';
 import { showEventsOnMap } from './utils/showEventsOnMap';
+import { setPolygonFilter } from './utils/setPolygonFilter';
 
 declare global {
   interface Window {
@@ -64,6 +65,7 @@ const Component = (props: Props) => {
 
       const progressEvents = queryEventByDate(['today'], events);
       showEventsOnMap(progressEvents, map);
+      setPolygonFilter(progressEvents, map);
 
       map.on('click', (e: any) => {
 

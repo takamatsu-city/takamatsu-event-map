@@ -3,6 +3,7 @@ import EventList from './EventList';
 import { queryEventByDate } from '../utils/queryEventByDate';
 import { queryEventByKeyword } from '../utils/queryEventByKeyword';
 import { showEventsOnMap } from '../utils/showEventsOnMap';
+import { setPolygonFilter } from '../utils/setPolygonFilter';
 import { QueryDate } from '../utils/types';
 import { Feature } from 'geojson';
 import geolonia from '@geolonia/embed';
@@ -27,6 +28,7 @@ const Content = (props: Props) => {
     const eventsSearchResult = queryEventByKeyword(queryKeyword, eventsFilterByDate);
     setSearchedEvents(eventsSearchResult);
     showEventsOnMap(eventsSearchResult, mapObject)
+    setPolygonFilter(eventsSearchResult, mapObject);
 
   }, [queryDate, queryKeyword, events, mapObject]);
 

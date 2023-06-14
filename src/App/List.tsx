@@ -8,6 +8,7 @@ import { Feature } from 'geojson';
 import geolonia from '@geolonia/embed';
 import { queryEventByDate } from './utils/queryEventByDate';
 import { showEventsOnMap } from './utils/showEventsOnMap';
+import { setPolygonFilter } from './utils/setPolygonFilter';
 
 type Props = {
   isPage: string | null;
@@ -36,8 +37,9 @@ const Content = (props: Props) => {
       listRef.current.classList.remove('open');
       setIsPage(null);
 
-      const openEvents = queryEventByDate(['today'], events);
-      showEventsOnMap(openEvents, mapObject);
+      const progressEvents = queryEventByDate(['today'], events);
+      showEventsOnMap(progressEvents, mapObject);
+      setPolygonFilter(progressEvents, mapObject);
 
       event.stopPropagation();
     }
