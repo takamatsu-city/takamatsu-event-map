@@ -2,6 +2,8 @@ import React from 'react';
 import SearchControl from './SearchControl';
 import { Feature } from 'geojson';
 import geolonia from '@geolonia/embed';
+import { queryEventByDate } from './utils/queryEventByDate';
+import { showEventsOnMap } from './utils/showEventsOnMap';
 
 declare global {
   interface Window {
@@ -22,11 +24,12 @@ type Props = {
   setClickedEvent: React.Dispatch<React.SetStateAction<Feature | null>>;
   setMapObject: React.Dispatch<React.SetStateAction<geolonia.Map | null>>;
   listRef: React.MutableRefObject<HTMLDivElement | null>;
+  events: Feature[];
 }
 
 const Component = (props: Props) => {
 
-  const { setIsPage, listRef, setClickedEvent, setMapObject } = props;
+  const { setIsPage, listRef, events, setClickedEvent, setMapObject } = props;
   const mapContainer = React.useRef(null);
 
   React.useEffect(() => {
@@ -59,6 +62,9 @@ const Component = (props: Props) => {
 
     map.on('load', (e: any) => {
 
+      const openEvents = queryEventByDate(['today'], events);
+      showEventsOnMap(openEvents, map);
+
       map.on('click', (e: any) => {
 
         const features = map.queryRenderedFeatures(e.point);
@@ -85,7 +91,7 @@ const Component = (props: Props) => {
       })
     })
 
-  }, [listRef, setClickedEvent, setIsPage, setMapObject]);
+  }, [events, listRef, setClickedEvent, setIsPage, setMapObject]);
 
   return (
     <>

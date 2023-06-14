@@ -6,6 +6,8 @@ import SearchResults from './ListContent/SearchResults';
 import { QueryDate } from './utils/types';
 import { Feature } from 'geojson';
 import geolonia from '@geolonia/embed';
+import { queryEventByDate } from './utils/queryEventByDate';
+import { showEventsOnMap } from './utils/showEventsOnMap';
 
 type Props = {
   isPage: string | null;
@@ -33,7 +35,12 @@ const Content = (props: Props) => {
     if (listRef.current && listRef.current.classList.contains('open')) {
       listRef.current.classList.remove('open');
       setIsPage(null);
-      mapObject?.setFilter('takamatsuarea', null);
+
+      if (!mapObject) return;
+
+      const openEvents = queryEventByDate(['today'], events);
+      showEventsOnMap(openEvents, mapObject);
+
       event.stopPropagation();
     }
   }

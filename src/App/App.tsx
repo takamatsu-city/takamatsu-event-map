@@ -33,6 +33,7 @@ function App() {
         setClickedEvent={setClickedEvent}
         setMapObject={setMapObject}
         listRef={listRef}
+        events={events}
       />
       <List
         setIsPage={setIsPage}
