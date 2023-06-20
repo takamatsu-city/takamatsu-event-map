@@ -80,7 +80,7 @@ const Content = (props: Props) => {
           })
         ) : (
           <div className="list-section">
-            <div className="list-title">現在開催中のイベントはありません</div>
+            <div className="list-title">該当するイベントは見つかりませんでした。</div>
           </div>
         )
       }
