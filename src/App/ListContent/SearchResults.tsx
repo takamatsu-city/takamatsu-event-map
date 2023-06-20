@@ -36,7 +36,7 @@ const Content = (props: Props) => {
       features: eventsSearchResult
     }
 
-    if (!mapObject) return;
+    if (!mapObject || eventsSearchResult.length === 0) return;
 
     const targetBbox = bbox(geojson);
 
