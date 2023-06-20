@@ -71,7 +71,7 @@ const Content = (props: Props) => {
           {
             eventData.price_basic && (
               <li className="display-block">
-                <div className="icon-container"><img src="./img/price.svg" alt="price icon" />1,500円</div>
+                <div className="icon-container"><img src="./img/price.svg" alt="price icon" />{eventData.price_basic}円</div>
                 {eventData.price_detail && <span className="list-price-description">{eventData.price_detail}</span>}
               </li>
             )
@@ -88,7 +88,7 @@ const Content = (props: Props) => {
             eventData.address && (
               <li>
                 <img src="./img/address.svg" alt="address icon" />
-                <div>香川県高松市サンポート3-33</div>
+                <div>{eventData.address}</div>
               </li>
             )
           }
