@@ -73,7 +73,7 @@ export default function Header() {
               <img className="logo" src="./img/logo.svg" alt="logo" />
               <div className="brand-title">
                 <span>Takamatsu City</span>
-                <p>もっと高松</p>
+                <p>高松市</p>
               </div>
             </div>
             <div className="copy-right">Copyright © Takamatsu City, All rights reserved.</div>
