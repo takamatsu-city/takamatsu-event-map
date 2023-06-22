@@ -12,3 +12,7 @@
   height: 40px;
   margin-right: 10px;
 }
+
+.marker-box .marker-name {
+  font-weight: normal;
+}

@@ -40,7 +40,7 @@ export default function Header() {
 
                     return <div key={categoryName} className='marker-box'>
                       <img src={`./img/marker/${iconName}.svg`} alt={categoryName} />
-                      <div>{categoryName}</div>
+                      <div className="marker-name">{categoryName}</div>
                     </div>
                   })
                 }
