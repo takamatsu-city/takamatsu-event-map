@@ -27,6 +27,9 @@ const Content = (props: Props) => {
 
     const eventsFilterByDate = queryEventByDate(queryDate, events);
     const eventsSearchResult = queryEventByKeyword(queryKeyword, eventsFilterByDate);
+
+    console.log(eventsSearchResult);
+
     setSearchedEvents(eventsSearchResult);
     showEventsOnMap(eventsSearchResult, mapObject)
     setPolygonFilter(eventsSearchResult, mapObject);
