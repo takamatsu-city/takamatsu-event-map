@@ -1,5 +1,5 @@
 import React from 'react';
-import './Header.css';
+import './Header.scss';
 import iconMapping from './utils/iconMapping.json';
 
 export default function Header() {

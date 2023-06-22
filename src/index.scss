@@ -300,41 +300,6 @@ header,
   width: 100%;
 }
 
-#banner {
-  position: absolute;
-  top: 60px;
-  left: 0;
-  right: 0;
-  z-index: 10;
-  background-color: #fff;
-  width: 80%;
-  max-width: 350px;
-  margin: auto;
-  border-radius: 30px;
-  padding: 15px 20px;
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-}
-
-#banner:hover {
-  opacity: 0.9;
-}
-
-#banner a {
-  text-decoration: none;
-  color: #4C4C4C;
-}
-
-.banner-title,
-.list-title {
-  font-weight: 700;
-  font-size: 16px;
-  margin-right: 25px;
-}
-
-.banner-title {
-  font-size: 18px;
-}
-
 .list-title {
   word-break: keep-all;
 }
