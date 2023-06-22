@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import formatDate from './utils/formatDate';
 import { Feature, } from 'geojson';
+import { today } from './utils/dates';
 
 type Props = {
   events: Feature[],
@@ -20,7 +21,14 @@ const Content = (props: Props) => {
     if (!events || events.length === 0) return;
 
     const bannerEvents = events.filter((event: Feature) => {
-      if (!event.properties) return false
+
+      //  00:00:00 の今日の日付を取得
+      const _today = new Date(today);
+      // @ts-ignore
+      const endDate = new Date(event.properties.end_date);
+
+      if (endDate < _today || !event.properties) return false
+
       return event.properties.banner_flg === "1"
     })
 
