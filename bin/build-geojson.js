@@ -6,21 +6,10 @@ const csv2geojson = require('csv2geojson');
 
 const csvPath = path.join(__dirname, '../public/data.csv');
 const geojsonPath = path.join(__dirname, '../public/data.geojson');
+let categoryIconMapping = fs.readFileSync(path.join(__dirname, '../src/App/utils/iconMapping.json'), 'utf-8')
+categoryIconMapping = JSON.parse(categoryIconMapping);
 
 const csv = fs.readFileSync(csvPath, 'utf-8');
-
-const categoryIconMapping = {
-  '季節のイベント': 'takamatsu_season',
-  'お祭り': 'takamatsu_uchiwa',
-  '食事': 'takamatsu_eating',
-  '買い物': 'takamatsu_shopping',
-  '文化・芸術': 'takamatsu_art',
-  '音楽': 'takamatsu_music',
-  'スポーツ・ウェルネス': 'takamatsu_sports_blue',
-  '趣味・生活': 'takamatsu_book',
-  'キャリア・ビジネス': 'takamatsu_bag',
-  'その他': 'takamatsu_other',
-}
 
 csv2geojson.csv2geojson(csv, {
   delimiter: ','

@@ -1,0 +1,12 @@
+{
+  "季節のイベント": "takamatsu_season",
+  "お祭り": "takamatsu_uchiwa",
+  "食事": "takamatsu_eating",
+  "買い物": "takamatsu_shopping",
+  "文化・芸術": "takamatsu_art",
+  "音楽": "takamatsu_music",
+  "スポーツ・ウェルネス": "takamatsu_sports_blue",
+  "趣味・生活": "takamatsu_book",
+  "キャリア・ビジネス": "takamatsu_bag",
+  "その他": "takamatsu_other"
+}
