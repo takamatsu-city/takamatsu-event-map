@@ -10,9 +10,9 @@ const Content = () => {
   return (
     <div className="share">
       <ul>
-        <li><a href="/"><TwitterShareButton url={url} hashtags={[``]} title={'たかまつエリアマップ'}><TwitterIcon size={32} round={true} /></TwitterShareButton></a></li>
-        <li><a href="/"><FacebookShareButton url={url} hashtag={'#たかまつエリアマップ'}><FacebookIcon size={32} round={true} /></FacebookShareButton></a></li>
-        <li><a href="/"><LineShareButton url={url} title={'たかまつエリアマップ'}><LineIcon size={32} round={true} /></LineShareButton></a></li>
+        <li><a href="/"><TwitterShareButton url={url} hashtags={[``]} title={'たかまつイベントマップ'}><TwitterIcon size={32} round={true} /></TwitterShareButton></a></li>
+        <li><a href="/"><FacebookShareButton url={url} hashtag={'#たかまつイベントマップ'}><FacebookIcon size={32} round={true} /></FacebookShareButton></a></li>
+        <li><a href="/"><LineShareButton url={url} title={'たかまつイベントマップ'}><LineIcon size={32} round={true} /></LineShareButton></a></li>
       </ul>
     </div>
   );
