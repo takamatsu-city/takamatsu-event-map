@@ -1,5 +1,6 @@
 import React from 'react';
 import './Header.css';
+import iconMapping from './utils/iconMapping.json';
 
 export default function Header() {
 
@@ -30,7 +31,19 @@ export default function Header() {
             </li>
             <li>
               <details>
-                <summary>メニュー2</summary>
+                <summary>イベントアイコンの凡例・説明</summary>
+                {
+                  Object.keys(iconMapping).map((categoryName) => {
+
+                    // @ts-ignore
+                    const iconName = iconMapping[categoryName];
+
+                    return <div key={categoryName}>
+                      <img src={`./img/marker/${iconName}`} alt={categoryName} />
+                      <div>{categoryName}</div>
+                    </div>
+                  })
+                }
                 <p>メニュー2のコンテンツ</p>
               </details>
             </li>
