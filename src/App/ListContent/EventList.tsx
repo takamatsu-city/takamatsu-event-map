@@ -5,13 +5,14 @@ import { targetIcon } from '../utils/targetIcon';
 
 type Props = {
   events: Feature[];
+  isPage: string | null;
   setIsPage: React.Dispatch<React.SetStateAction<string | null>>;
   setEventDetail: React.Dispatch<React.SetStateAction<Feature | null>>;
 }
 
 const Content = (props: Props) => {
 
-  const { events, setIsPage, setEventDetail } = props;
+  const { events, isPage, setIsPage, setEventDetail } = props;
 
   // start_date でソート
   events.sort((a, b) => {
@@ -24,7 +25,13 @@ const Content = (props: Props) => {
 
   const openDetailHandler = (feature: Feature) => {
     setEventDetail(feature);
-    setIsPage('eventDetail');
+
+    if (isPage === 'searchResults') {
+      setIsPage('searchResultDetail');
+    } else {
+      setIsPage('eventDetail');
+    }
+
   }
 
   return (

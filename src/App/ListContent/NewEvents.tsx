@@ -4,13 +4,14 @@ import { queryEventByDate } from '../utils/queryEventByDate';
 
 type Props = {
   events: Feature[];
+  isPage: string | null;
   setIsPage: React.Dispatch<React.SetStateAction<string | null>>;
   setEventDetail: React.Dispatch<React.SetStateAction<Feature | null>>;
 }
 
 const Content = (props: Props) => {
 
-  const { events, setIsPage, setEventDetail } = props;
+  const { events, isPage, setIsPage, setEventDetail } = props;
 
   const progressEvents = queryEventByDate(['today'], events);
 
@@ -21,7 +22,7 @@ const Content = (props: Props) => {
           <i className="fa-sharp fa-solid fa-list"></i>
           <div className="title">イベントリスト</div>
         </div>
-        <EventList events={progressEvents} setIsPage={setIsPage} setEventDetail={setEventDetail} />
+        <EventList events={progressEvents} isPage={isPage} setIsPage={setIsPage} setEventDetail={setEventDetail} />
       </div>
     </>
   );

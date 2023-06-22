@@ -412,6 +412,25 @@ header,
   background-color: rgba(255, 255, 255, 0);
 }
 
+#list-return {
+  height: 30px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  position: absolute;
+  top: 20px;
+  right: 60px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+#list-return img {
+  width: 20px;
+  height: 20px;
+}
+
 #list {
   position: absolute;
   width: 100%;

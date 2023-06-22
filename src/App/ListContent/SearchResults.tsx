@@ -14,12 +14,13 @@ type Props = {
   queryKeyword: string;
   events: Feature[];
   mapObject: geolonia.Map | null;
+  isPage: string | null;
   setIsPage: React.Dispatch<React.SetStateAction<string | null>>;
   setEventDetail: React.Dispatch<React.SetStateAction<Feature | null>>;
 }
 
 const Content = (props: Props) => {
-  const { queryDate, queryKeyword, events, mapObject, setIsPage, setEventDetail } = props;
+  const { queryDate, queryKeyword, events, isPage, mapObject, setIsPage, setEventDetail } = props;
 
   const [searchedEvents, setSearchedEvents] = useState<Feature[]>([]);
 
@@ -73,7 +74,7 @@ const Content = (props: Props) => {
             </div>
           </div>
         </div>
-        <EventList events={searchedEvents} setIsPage={setIsPage} setEventDetail={setEventDetail} />
+        <EventList events={searchedEvents} setIsPage={setIsPage} isPage={isPage} setEventDetail={setEventDetail} />
       </div>
     </>
   );

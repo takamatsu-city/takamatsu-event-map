@@ -12,7 +12,7 @@ import { setPolygonFilter } from './utils/setPolygonFilter';
 
 type Props = {
   isPage: string | null;
-  listRef: React.MutableRefObject<HTMLDivElement| null>;
+  listRef: React.MutableRefObject<HTMLDivElement | null>;
   events: Feature[],
   clickedEvent: Feature | null;
   mapObject: geolonia.Map | null;
@@ -32,7 +32,7 @@ const Content = (props: Props) => {
     }
   }
 
-  const closeListHandler = (event:any) => {
+  const closeListHandler = (event: any) => {
     if (listRef.current && listRef.current.classList.contains('open')) {
       listRef.current.classList.remove('open');
       setIsPage(null);
@@ -45,16 +45,36 @@ const Content = (props: Props) => {
     }
   }
 
+  const returnListHandler = () => {
+
+    if (isPage === 'eventDetail') {
+
+      setIsPage(null);
+
+    } else if (isPage === 'searchResultDetail') {
+
+      setIsPage('searchResults');
+    }
+  }
+
+  const isShowMarkerDetail = isPage === 'eventDetail' || isPage === 'searchResultDetail';
+
   return (
     <>
       <div id="list" ref={listRef} onClick={openListHandler}>
         <label id="list-close" onClick={closeListHandler}><span></span></label>
+        {isShowMarkerDetail && (
+          <label id="list-return" onClick={returnListHandler}>
+            <img src="./img/arrow-left.svg" alt="戻る" />
+          </label>
+        )
+        }
         <div id="list-content">
-          {!isPage &&  <NewEvents events={events} setIsPage={setIsPage} setEventDetail={setEventDetail} />}
-          {isPage === 'eventDetail' && <MarkerDetail event={eventDetail} />}
+          {!isPage && <NewEvents events={events} isPage={isPage} setIsPage={setIsPage} setEventDetail={setEventDetail} />}
+          {isShowMarkerDetail && <MarkerDetail event={eventDetail} />}
           {isPage === 'marker' && <MarkerDetail event={clickedEvent} />}
           {isPage === 'search' && <Search setIsPage={setIsPage} setQueryDate={setQueryDate} setQueryKeyword={setQueryKeyword} />}
-          {isPage === 'searchResults' && <SearchResults  queryDate={queryDate} queryKeyword={queryKeyword} events={events} setIsPage={setIsPage} setEventDetail={setEventDetail} mapObject={mapObject} />}
+          {isPage === 'searchResults' && <SearchResults queryDate={queryDate} queryKeyword={queryKeyword} events={events} setIsPage={setIsPage} isPage={isPage} setEventDetail={setEventDetail} mapObject={mapObject} />}
         </div>
       </div>
     </>
