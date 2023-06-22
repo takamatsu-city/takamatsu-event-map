@@ -7,10 +7,17 @@ export const queryEventByKeyword = (keyword: string, events: Feature[]) => {
   return events.filter((event) => {
 
     const properties = event.properties as EventProps
-    const tag = properties.tag
+    let tag = properties.tag;
+    let event_name = properties.event_name;
+    let description = properties.description;
 
-    if (!tag) return false
+    if (!tag || !event_name) return false
 
-    return tag.toLowerCase().includes(keyword.toLowerCase())
+    return (
+      tag.replace(/\r?\n/g, '').includes(keyword) ||
+      event_name.replace(/\r?\n/g, '').includes(keyword) ||
+      description.replace(/\r?\n/g, '').includes(keyword)
+    )
   })
 }
+
