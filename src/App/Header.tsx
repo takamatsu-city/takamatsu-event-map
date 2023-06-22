@@ -31,20 +31,19 @@ export default function Header() {
             </li>
             <li>
               <details>
-                <summary>イベントアイコンの凡例・説明</summary>
+                <summary className='marker-description'>イベントアイコンの凡例・説明</summary>
                 {
                   Object.keys(iconMapping).map((categoryName) => {
 
                     // @ts-ignore
                     const iconName = iconMapping[categoryName];
 
-                    return <div key={categoryName}>
-                      <img src={`./img/marker/${iconName}`} alt={categoryName} />
+                    return <div key={categoryName} className='marker-box'>
+                      <img src={`./img/marker/${iconName}.svg`} alt={categoryName} />
                       <div>{categoryName}</div>
                     </div>
                   })
                 }
-                <p>メニュー2のコンテンツ</p>
               </details>
             </li>
             <li>

@@ -1,0 +1,14 @@
+.marker-box:first-child {
+  margin-top: 30px;
+}
+
+.marker-box {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.marker-box img {
+  height: 40px;
+  margin-right: 10px;
+}
