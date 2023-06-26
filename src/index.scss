@@ -321,22 +321,22 @@ header,
 
 #banner-close,
 #list-close {
-  height: 30px;
-  width: 30px;
+  height: 15px;
+  width: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 100;
   position: absolute;
-  top: 10px;
+  top: 27px;
   right: 10px;
   padding: 5px;
   cursor: pointer;
 }
 
 #list-close {
-  top: 20px;
-  right: 20px;
+  top: 27px;
+  right: 30px;
   display: none;
   z-index: 5;
 }
@@ -354,7 +354,7 @@ header,
   content: '';
   display: block;
   height: 2px;
-  width: 20px;
+  width: 18px;
   border-radius: 3px;
   background-color: var(--header-color);
   position: absolute;
@@ -378,22 +378,19 @@ header,
 }
 
 #list-return {
-  height: 30px;
-  width: 30px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  z-index: 100;
-  position: absolute;
-  top: 20px;
-  right: 60px;
-  padding: 5px;
+  padding-left: 30px;
+  padding-top: 30px;
   cursor: pointer;
+  color: var(--header-color);
+  font-size: 14px;
+  font-weight: 700;
 }
 
 #list-return img {
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
 }
 
 #list {

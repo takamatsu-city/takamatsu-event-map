@@ -65,7 +65,8 @@ const Content = (props: Props) => {
         <label id="list-close" onClick={closeListHandler}><span></span></label>
         {isShowMarkerDetail && (
           <label id="list-return" onClick={returnListHandler}>
-            <img src="./img/arrow-left.svg" alt="戻る" />
+            <img src="./img/arrow-left.svg" alt="一覧に戻る" />
+            <span>一覧に戻る</span>
           </label>
         )
         }
