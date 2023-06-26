@@ -4,7 +4,6 @@ import Banner from './Banner';
 import Map from './Map';
 import List from './List';
 import { Feature } from 'geojson';
-import './App.css';
 import geolonia from '@geolonia/embed';
 
 function App() {
