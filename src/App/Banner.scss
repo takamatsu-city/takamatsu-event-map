@@ -23,7 +23,7 @@
     transition: .5s;
 
     a {
-      padding: 15px 20px;
+      padding: 15px 20px 0 20px;
     }
 
     .guide-panel-button {
@@ -65,7 +65,7 @@
 }
 
 #guide-panel-check:checked~.guide-panel-content {
-  top: 200px;
+  top: 215px;
   .arrow {
     transform: rotate(-135deg);
     -webkit-transform: rotate(-135deg);
