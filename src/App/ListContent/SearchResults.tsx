@@ -9,6 +9,7 @@ import { QueryDate } from '../utils/types';
 import { Feature } from 'geojson';
 import geolonia from '@geolonia/embed';
 import bbox from '@turf/bbox';
+import CloseListButton from './CloseListButton';
 
 type Props = {
   queryDate: QueryDate;
@@ -18,10 +19,11 @@ type Props = {
   isPage: string | null;
   setIsPage: React.Dispatch<React.SetStateAction<string | null>>;
   setEventDetail: React.Dispatch<React.SetStateAction<Feature | null>>;
+  closeListHandler: (event: any) => void
 }
 
 const Content = (props: Props) => {
-  const { queryDate, queryKeyword, events, isPage, mapObject, setIsPage, setEventDetail } = props;
+  const { queryDate, queryKeyword, events, isPage, mapObject, setIsPage, setEventDetail, closeListHandler} = props;
 
   const [searchedEvents, setSearchedEvents] = useState<Feature[]>([]);
 
@@ -50,6 +52,7 @@ const Content = (props: Props) => {
     <>
       <div id="search-result">
         <div className="list-header">
+          <CloseListButton closeListHandler={closeListHandler} />
           <div className="list-header-inner">
             <img src="./img/search.svg" alt="search icon" />
             <div className="list-header-title">
