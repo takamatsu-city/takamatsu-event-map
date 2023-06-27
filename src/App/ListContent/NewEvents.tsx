@@ -19,7 +19,7 @@ const Content = (props: Props) => {
     <>
       <div id="new-events">
         <div className="list-header">
-          <i className="fa-sharp fa-solid fa-list"></i>
+          <img src="./img/list.svg" alt="イベントリスト" className='list-logo'/>
           <div className="title">イベントリスト</div>
         </div>
         <EventList events={progressEvents} isPage={isPage} setIsPage={setIsPage} setEventDetail={setEventDetail} />
