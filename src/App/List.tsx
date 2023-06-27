@@ -62,7 +62,6 @@ const Content = (props: Props) => {
   return (
     <>
       <div id="list" ref={listRef} onClick={openListHandler}>
-        <label id="list-close" onClick={closeListHandler}><span></span></label>
         {isShowMarkerDetail && (
           <label id="list-return" onClick={returnListHandler}>
             <img src="./img/arrow-left.svg" alt="一覧に戻る" />
@@ -71,11 +70,11 @@ const Content = (props: Props) => {
         )
         }
         <div id="list-content">
-          {!isPage && <NewEvents events={events} isPage={isPage} setIsPage={setIsPage} setEventDetail={setEventDetail} />}
-          {isShowMarkerDetail && <MarkerDetail event={eventDetail} />}
-          {isPage === 'marker' && <MarkerDetail event={clickedEvent} />}
-          {isPage === 'search' && <Search setIsPage={setIsPage} setQueryDate={setQueryDate} setQueryKeyword={setQueryKeyword} />}
-          {isPage === 'searchResults' && <SearchResults queryDate={queryDate} queryKeyword={queryKeyword} events={events} setIsPage={setIsPage} isPage={isPage} setEventDetail={setEventDetail} mapObject={mapObject} />}
+          {!isPage && <NewEvents events={events} isPage={isPage} setIsPage={setIsPage} setEventDetail={setEventDetail} closeListHandler={closeListHandler} />}
+          {isShowMarkerDetail && <MarkerDetail event={eventDetail} closeListHandler={closeListHandler} />}
+          {isPage === 'marker' && <MarkerDetail event={clickedEvent} closeListHandler={closeListHandler} />}
+          {isPage === 'search' && <Search setIsPage={setIsPage} setQueryDate={setQueryDate} setQueryKeyword={setQueryKeyword} closeListHandler={closeListHandler} />}
+          {isPage === 'searchResults' && <SearchResults queryDate={queryDate} queryKeyword={queryKeyword} events={events} setIsPage={setIsPage} isPage={isPage} setEventDetail={setEventDetail} closeListHandler={closeListHandler} mapObject={mapObject} />}
         </div>
       </div>
     </>

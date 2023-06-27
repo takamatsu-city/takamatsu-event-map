@@ -2,13 +2,15 @@ import { Feature } from 'geojson';
 import { EventProps } from '../utils/types';
 import formatDate from '../utils/formatDate';
 import { targetIcon } from '../utils/targetIcon';
+import CloseListButton from './CloseListButton';
 
 type Props = {
   event: Feature | null;
+  closeListHandler: (event: any) => void
 }
 
 const Content = (props: Props) => {
-  const { event } = props;
+  const { event, closeListHandler } = props;
 
   if (!event) return <></>;
 
@@ -18,6 +20,7 @@ const Content = (props: Props) => {
   return (
     <>
       <div id="content2">
+        <CloseListButton closeListHandler={closeListHandler} />
         {eventData.event_name && <div className="list-title">{eventData.event_name}</div>}
         {(eventData.start_date && eventData.end_date) && <div className="list-period">{`${formatDate(eventData.start_date)}-${formatDate(eventData.end_date)}`}</div>}
         <ul>

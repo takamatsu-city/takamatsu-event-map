@@ -1,13 +1,15 @@
 import { QueryDate } from '../utils/types';
+import CloseListButton from './CloseListButton';
 
 type Props = {
   setIsPage: React.Dispatch<React.SetStateAction<string | null>>;
   setQueryDate: React.Dispatch<React.SetStateAction<QueryDate>>;
   setQueryKeyword: React.Dispatch<React.SetStateAction<string>>;
+  closeListHandler: (event: any) => void
 }
 
 const Content = (props: Props) => {
-  const { setQueryDate, setQueryKeyword, setIsPage } = props;
+  const { setQueryDate, setQueryKeyword, setIsPage, closeListHandler } = props;
 
   const handleSubmit = (e: any) => {
 
@@ -34,6 +36,7 @@ const Content = (props: Props) => {
   return (
     <>
       <div id="search">
+        <CloseListButton closeListHandler={closeListHandler} />
         <form method="post" onSubmit={handleSubmit}>
           <div className="content-title"><img className='calendar-logo' src='./img/calendar.svg' alt="開催日から探す" />開催日から探す</div>
           <div className="checkbox-group mts">

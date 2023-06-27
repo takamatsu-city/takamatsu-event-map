@@ -712,6 +712,9 @@ header,
   flex-direction: row;
   align-items: center;
   box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  background-color: #ffffff;
 }
 
 #search-result .list-header img,
