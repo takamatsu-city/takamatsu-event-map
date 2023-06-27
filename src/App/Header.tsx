@@ -46,29 +46,34 @@ export default function Header() {
                 }
               </details>
             </li>
+            <li>
+              <details>
+                <summary>掲載しているイベント情報について</summary>
+                <ul>
+                  <li>本アプリで表示されるイベント情報は、予告なく変更される可能性があります。</li>
+                  <li>本アプリの情報はリアルタイムでないため、実際のイベント状況と異なる場合があります。</li>
+                  <li>天候によりイベントが開催されない可能性がございます。詳細は各イベントの公式情報をご確認ください。</li>
+                </ul>
+              </details>
+            </li>
           </ul>
           <div className="menu-footer">
             <div className="social-icons">
               <div className="social-icons-title">SOCIAL</div>
               <ul>
                 <li>
-                  <a href="./" target="_blank" rel="noopener noreferrer">
+                  <a href="https://www.facebook.com/takamatsucity" target="_blank" rel="noopener noreferrer">
                     <img src="./img/facebook.png" alt="facebook" />
                   </a>
                 </li>
                 <li>
-                  <a href="./" target="_blank" rel="noopener noreferrer">
+                  <a href="https://twitter.com/takamatsu_kouho" target="_blank" rel="noopener noreferrer">
                     <img src="./img/twitter.png" alt="twitter" />
                   </a>
                 </li>
                 <li>
-                  <a href="./" target="_blank" rel="noopener noreferrer">
+                  <a href="https://page.line.me/yjv8540a" target="_blank" rel="noopener noreferrer">
                     <img src="./img/line.png" alt="line" />
-                  </a>
-                </li>
-                <li>
-                  <a href="./" target="_blank" rel="noopener noreferrer">
-                    <img src="./img/instagram.png" alt="instagram" />
                   </a>
                 </li>
               </ul>
