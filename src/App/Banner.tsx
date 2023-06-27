@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import formatDate from './utils/formatDate';
 import { Feature, } from 'geojson';
 import { today } from './utils/dates';
@@ -11,6 +11,9 @@ type Props = {
 const Content = (props: Props) => {
   const { events } = props;
   const [event, setEvent] = useState<any | null>(null);
+  const [checked, setChecked] = useState<boolean>(true);
+  const guidePanelContent = useRef<HTMLDivElement>(null);
+  const guidePanelContentLink = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
 
@@ -55,13 +58,30 @@ const Content = (props: Props) => {
 
   }, [events]);
 
+  useEffect(() => {
+
+    if (!guidePanelContent.current || !guidePanelContentLink.current || !event) return;
+
+    if (checked) {
+      guidePanelContent.current.style.top = `${guidePanelContentLink.current.clientHeight + 10}px`;
+    } else {
+      guidePanelContent.current.style.top = `10px`;
+    }
+
+  // バナーに表示している event が変化するたびにバナーの高さを再計算する
+  }, [guidePanelContent, event, checked])
+
+  const handleCheck = () => {
+    setChecked(!checked);
+  }
+
   return (
     <>
       {
         event && <div id="guide-panel">
-          <input type="checkbox" id="guide-panel-check" className="guide-panel-hidden" defaultChecked />
-          <div className="guide-panel-content">
-            <a href={event.url} target="_blank" rel="noopener noreferrer">
+          <input onChange={handleCheck} type="checkbox" id="guide-panel-check" className="guide-panel-hidden" defaultChecked />
+          <div ref={guidePanelContent} className="guide-panel-content">
+            <a ref={guidePanelContentLink} href={event.url} target="_blank" rel="noopener noreferrer">
               {event.event_name && <div className="banner-title">{event.event_name}</div>}
               {(event.start_date && event.end_date) && <div className="banner-period">{`${formatDate(event.start_date)}-${formatDate(event.end_date)}`}</div>}
               {event.description && <div className="banner-description">{event.description}</div>}
