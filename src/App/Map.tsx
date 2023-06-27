@@ -5,6 +5,7 @@ import geolonia from '@geolonia/embed';
 import { queryEventByDate } from './utils/queryEventByDate';
 import { showEventsOnMap } from './utils/showEventsOnMap';
 import { setPolygonFilter } from './utils/setPolygonFilter';
+import { fitBoundsToUpperScreen } from './utils/fitBoundsToUpperScreen';
 
 declare global {
   interface Window {
@@ -88,6 +89,19 @@ const Component = (props: Props) => {
             if (listRef.current && !listRef.current.classList.contains('open')) {
               listRef.current.classList.add('open');
             }
+
+            const size = 0.0000001 // 1.4cm
+            // クリックした地点から 1.4cm 四方の bbox を作成
+            const targetBbox = [
+              e.lngLat.lng - size,
+              e.lngLat.lat - size,
+              e.lngLat.lng + size,
+              e.lngLat.lat + size
+            ];
+
+            fitBoundsToUpperScreen(targetBbox, mapObject);
+
+
           } else {
 
             setIsPage(null);

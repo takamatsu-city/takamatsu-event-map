@@ -42,27 +42,7 @@ const Content = (props: Props) => {
     if (!mapObject || eventsSearchResult.length === 0) return;
 
     const targetBbox = bbox(geojson);
-
     fitBoundsToUpperScreen(targetBbox, mapObject);
-
-    // const app = document.getElementsByClassName('app')[0]
-    // const screenHeight = app.clientHeight;
-
-    // const listHeightRatio = 0.6;
-    // const listHeight = screenHeight * listHeightRatio;
-
-    // const headerHeight = 50;
-    // const padding = 50;
-
-    // // @ts-ignore
-    // mapObject.fitBounds(targetBbox, {
-    //   padding: {
-    //     top: padding + headerHeight,
-    //     bottom: listHeight + padding,
-    //     left: padding,
-    //     right: padding
-    //   }
-    // });
 
   }, [queryDate, queryKeyword, events, mapObject]);
 
