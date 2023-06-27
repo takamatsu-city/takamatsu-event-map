@@ -46,12 +46,6 @@ export default function Header() {
                 }
               </details>
             </li>
-            <li>
-              <details>
-                <summary>メニュー3</summary>
-                <p>メニュー3のコンテンツ</p>
-              </details>
-            </li>
           </ul>
           <div className="menu-footer">
             <div className="social-icons">
