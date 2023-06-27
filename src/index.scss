@@ -84,7 +84,7 @@ header,
 
 .menu-btn {
   position: absolute;
-  right: 10px;
+  right: 20px;
   top: 10px;
   height: 30px;
   width: 30px;
@@ -216,7 +216,7 @@ header,
   padding-left: 1em;
 }
 
-.menu-content details li {
+.menu-content details ol li {
   font-size: 12px;
   font-weight: normal;
   list-style-position: inside;
@@ -224,6 +224,21 @@ header,
   text-indent: -1em;
   border: none;
   list-style-type: decimal;
+}
+
+.menu-content details ul {
+  padding: 10px 0 0 1em;
+  list-style-position: inside;
+}
+
+.menu-content details ul li {
+  font-size: 12px;
+  font-weight: normal;
+  list-style-position: inside!important;
+  list-style: disc;
+  padding-left: 1em;
+  text-indent: -1em;
+  border: none;
 }
 
 #menu-btn-check:checked~.menu-content {

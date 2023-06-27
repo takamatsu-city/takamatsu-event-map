@@ -46,6 +46,16 @@ export default function Header() {
                 }
               </details>
             </li>
+            <li>
+              <details>
+                <summary>掲載しているイベント情報について</summary>
+                <ul>
+                  <li>本アプリで表示されるイベント情報は、予告なく変更される可能性があります。</li>
+                  <li>本アプリの情報はリアルタイムでないため、実際のイベント状況と異なる場合があります。</li>
+                  <li>天候によりイベントが開催されない可能性がございます。詳細は各イベントの公式情報をご確認ください。</li>
+                </ul>
+              </details>
+            </li>
           </ul>
           <div className="menu-footer">
             <div className="social-icons">
