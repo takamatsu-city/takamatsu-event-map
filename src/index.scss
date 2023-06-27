@@ -171,6 +171,10 @@ header,
   list-style: none;
 }
 
+.menu-content ul li summary::-webkit-details-marker {
+  display:none;
+}
+
 .menu-content ul li details p {
   font-size: 12px;
   font-weight: 400;
