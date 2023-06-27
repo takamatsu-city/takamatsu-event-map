@@ -6,12 +6,13 @@ import './Banner.scss';
 
 type Props = {
   events: Feature[],
+  isBannerOpen: boolean
+  setIsBannerOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const Content = (props: Props) => {
-  const { events } = props;
+  const { events, isBannerOpen, setIsBannerOpen } = props;
   const [event, setEvent] = useState<any | null>(null);
-  const [checked, setChecked] = useState<boolean>(true);
   const guidePanelContent = useRef<HTMLDivElement>(null);
   const guidePanelContentLink = useRef<HTMLAnchorElement>(null);
 
@@ -62,17 +63,17 @@ const Content = (props: Props) => {
 
     if (!guidePanelContent.current || !guidePanelContentLink.current || !event) return;
 
-    if (checked) {
+    if (isBannerOpen) {
       guidePanelContent.current.style.top = `${guidePanelContentLink.current.clientHeight + 10}px`;
     } else {
       guidePanelContent.current.style.top = `10px`;
     }
 
   // バナーに表示している event が変化するたびにバナーの高さを再計算する
-  }, [guidePanelContent, event, checked])
+  }, [guidePanelContent, event, isBannerOpen])
 
   const handleCheck = () => {
-    setChecked(!checked);
+    setIsBannerOpen(!isBannerOpen);
   }
 
   return (

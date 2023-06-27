@@ -25,6 +25,7 @@ type Props = {
   setIsPage: React.Dispatch<React.SetStateAction<string | null>>;
   setClickedEvent: React.Dispatch<React.SetStateAction<Feature | null>>;
   setMapObject: React.Dispatch<React.SetStateAction<geolonia.Map | null>>;
+  setIsBannerOpen: React.Dispatch<React.SetStateAction<boolean>>;
   listRef: React.MutableRefObject<HTMLDivElement | null>;
   events: Feature[];
   mapObject: geolonia.Map | null;
@@ -32,7 +33,7 @@ type Props = {
 
 const Component = (props: Props) => {
 
-  const { listRef, events, mapObject, setIsPage, setClickedEvent, setMapObject } = props;
+  const { listRef, events, mapObject, setIsPage, setClickedEvent, setMapObject, setIsBannerOpen } = props;
   const mapContainer = React.useRef(null);
 
   React.useEffect(() => {
@@ -59,11 +60,12 @@ const Component = (props: Props) => {
       setIsPage('search');
       if (listRef.current && !listRef.current.classList.contains('open')) {
         listRef.current.classList.add('open');
+        setIsBannerOpen(false);
       }
     }
     map.addControl(new SearchControl(setSearchPage), 'bottom-right');
 
-  }, [listRef, setIsPage, setMapObject]);
+  }, [listRef, setIsBannerOpen, setIsPage, setMapObject]);
 
   useEffect(() => {
 
@@ -88,6 +90,7 @@ const Component = (props: Props) => {
             setIsPage('marker');
             if (listRef.current && !listRef.current.classList.contains('open')) {
               listRef.current.classList.add('open');
+              setIsBannerOpen(false);
             }
 
             // @ts-ignore
@@ -117,7 +120,7 @@ const Component = (props: Props) => {
         }
       })
     })
-  }, [events, listRef, mapObject, setClickedEvent, setIsPage]);
+  }, [events, listRef, mapObject, setClickedEvent, setIsBannerOpen, setIsPage]);
 
   return (
     <>

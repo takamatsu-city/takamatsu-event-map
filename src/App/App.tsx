@@ -11,6 +11,8 @@ function App() {
   const [events, setEvents] = useState<Feature[]>([]);
   const [clickedEvent, setClickedEvent] = useState<Feature | null>(null);
   const [mapObject, setMapObject] = useState<geolonia.Map | null>(null);
+  const [isBannerOpen, setIsBannerOpen] = useState<boolean>(true);
+
   const listRef: React.MutableRefObject<HTMLDivElement | null> = useRef(null);
 
   useEffect(() => {
@@ -26,17 +28,23 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Banner events={events}/>
+      <Banner
+        events={events}
+        isBannerOpen={isBannerOpen}
+        setIsBannerOpen={setIsBannerOpen}
+      />
       <Map
         setIsPage={setIsPage}
         setClickedEvent={setClickedEvent}
         setMapObject={setMapObject}
+        setIsBannerOpen={setIsBannerOpen}
         listRef={listRef}
         events={events}
         mapObject={mapObject}
       />
       <List
         setIsPage={setIsPage}
+        setIsBannerOpen={setIsBannerOpen}
         isPage={isPage}
         listRef={listRef}
         events={events}

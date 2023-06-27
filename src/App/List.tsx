@@ -17,10 +17,11 @@ type Props = {
   clickedEvent: Feature | null;
   mapObject: geolonia.Map | null;
   setIsPage: React.Dispatch<React.SetStateAction<string | null>>;
+  setIsBannerOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const Content = (props: Props) => {
-  const { isPage, listRef, events, clickedEvent, mapObject, setIsPage } = props;
+  const { isPage, listRef, events, clickedEvent, mapObject, setIsPage, setIsBannerOpen } = props;
   const [eventDetail, setEventDetail] = useState<Feature | null>(null);
   const [queryDate, setQueryDate] = useState<QueryDate>([]);
   const [queryKeyword, setQueryKeyword] = useState<string>('');
@@ -29,6 +30,7 @@ const Content = (props: Props) => {
   const openListHandler = () => {
     if (listRef.current && !listRef.current.classList.contains('open')) {
       listRef.current.classList.add('open');
+      setIsBannerOpen(false);
     }
   }
 
