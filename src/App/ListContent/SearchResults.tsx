@@ -4,6 +4,7 @@ import { queryEventByDate } from '../utils/queryEventByDate';
 import { queryEventByKeyword } from '../utils/queryEventByKeyword';
 import { showEventsOnMap } from '../utils/showEventsOnMap';
 import { setPolygonFilter } from '../utils/setPolygonFilter';
+import { fitBoundsToUpperScreen } from '../utils/fitBoundsToUpperScreen';
 import { QueryDate } from '../utils/types';
 import { Feature } from 'geojson';
 import geolonia from '@geolonia/embed';
@@ -29,8 +30,6 @@ const Content = (props: Props) => {
     const eventsFilterByDate = queryEventByDate(queryDate, events);
     const eventsSearchResult = queryEventByKeyword(queryKeyword, eventsFilterByDate);
 
-    console.log(eventsSearchResult);
-
     setSearchedEvents(eventsSearchResult);
     showEventsOnMap(eventsSearchResult, mapObject)
     setPolygonFilter(eventsSearchResult, mapObject);
@@ -43,25 +42,7 @@ const Content = (props: Props) => {
     if (!mapObject || eventsSearchResult.length === 0) return;
 
     const targetBbox = bbox(geojson);
-
-    const app = document.getElementsByClassName('app')[0]
-    const screenHeight = app.clientHeight;
-
-    const listHeightRatio = 0.6;
-    const listHeight = screenHeight * listHeightRatio;
-
-    const headerHeight = 50;
-    const padding = 50;
-
-    // @ts-ignore
-    mapObject.fitBounds(targetBbox, {
-      padding: {
-        top: padding + headerHeight,
-        bottom: listHeight + padding,
-        left: padding,
-        right: padding
-      }
-    });
+    fitBoundsToUpperScreen(targetBbox, mapObject);
 
   }, [queryDate, queryKeyword, events, mapObject]);
 
