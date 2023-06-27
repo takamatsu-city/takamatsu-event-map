@@ -65,7 +65,7 @@ const Content = (props: Props) => {
     if (checked) {
       guidePanelContent.current.style.top = `${guidePanelContentLink.current.clientHeight + 10}px`;
     } else {
-      guidePanelContent.current.style.top = `0px`;
+      guidePanelContent.current.style.top = `10px`;
     }
 
   // バナーに表示している event が変化するたびにバナーの高さを再計算する
