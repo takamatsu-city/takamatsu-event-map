@@ -35,7 +35,7 @@ const Content = (props: Props) => {
     <>
       <div id="search">
         <form method="post" onSubmit={handleSubmit}>
-          <div className="content-title"><i className="fa-solid fa-calendar-days"></i>開催日から探す</div>
+          <div className="content-title"><img className='calendar-logo' src='./img/calendar.svg' alt="開催日から探す" />開催日から探す</div>
           <div className="checkbox-group mts">
             <div className="item">
               <input type="checkbox" name="eventDate" className="checkbox" value="today" id="today" defaultChecked />
@@ -52,9 +52,9 @@ const Content = (props: Props) => {
           </div>
           <div className="keyword-container">
             <input id="keyword" name="keyword" type="text" placeholder="キーワードで絞り込み" />
-            <i className="fa-solid fa-magnifying-glass"></i>
+            <img className='search-logo' src='./img/search-gray.svg' alt="キーワードで絞り込み" />
           </div>
-          <button id="submit-button">絞り込み<i className="fa-solid fa-chevron-right"></i></button>
+          <button id="submit-button">絞り込み<img className='arrow-right' src='./img/arrow-white-right.svg' alt="絞り込み" /></button>
         </form>
       </div>
     </>
