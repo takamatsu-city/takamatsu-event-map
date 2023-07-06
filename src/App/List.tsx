@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import NewEvents from './ListContent/NewEvents';
 import MarkerDetail from './ListContent/MarkerDetail';
 import Search from './ListContent/Search';
@@ -25,7 +25,6 @@ const Content = (props: Props) => {
   const [eventDetail, setEventDetail] = useState<Feature | null>(null);
   const [queryDate, setQueryDate] = useState<QueryDate>([]);
   const [queryKeyword, setQueryKeyword] = useState<string>('');
-
 
   const openListHandler = () => {
     if (listRef.current && !listRef.current.classList.contains('open')) {
@@ -61,6 +60,13 @@ const Content = (props: Props) => {
 
   const isShowMarkerDetail = isPage === 'eventDetail' || isPage === 'searchResultDetail';
 
+  // イベントリスト及び検索結果一覧画面で、スクロール後にマーカー詳細画面を表示した場合、スクロール位置を一番上に戻す
+  useEffect(() => {
+    if (isShowMarkerDetail && listRef.current) {
+      listRef.current.scrollTop = 0;
+    }
+  }, [isShowMarkerDetail, listRef])
+
   return (
     <>
       <div id="list" ref={listRef} onClick={openListHandler}>
@@ -69,8 +75,7 @@ const Content = (props: Props) => {
             <img src="./img/arrow-left.svg" alt="一覧に戻る" />
             <span>一覧に戻る</span>
           </label>
-        )
-        }
+        )}
         <div id="list-content">
           {!isPage && <NewEvents events={events} isPage={isPage} setIsPage={setIsPage} setEventDetail={setEventDetail} closeListHandler={closeListHandler} />}
           {isShowMarkerDetail && <MarkerDetail event={eventDetail} closeListHandler={closeListHandler} />}

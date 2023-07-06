@@ -438,7 +438,8 @@ header,
   display: none;
 }
 
-#list::before {
+#list::before,
+.list-header::before {
   content: '';
   display: block;
   position: absolute;
@@ -521,6 +522,7 @@ header,
 .list-header {
   display: flex;
   align-items: center;
+  z-index: 3;
 }
 
 .list-header .title {
