@@ -2,6 +2,7 @@ import { Feature } from 'geojson';
 import { EventProps } from '../utils/types';
 import formatDate from '../utils/formatDate';
 import { targetIcon } from '../utils/targetIcon';
+import { setGa4Event } from '../utils/setGa4Event';
 
 type Props = {
   events: Feature[];
@@ -32,6 +33,8 @@ const Content = (props: Props) => {
       setIsPage('eventDetail');
     }
 
+    const { category, event_name } = feature.properties as EventProps;
+    setGa4Event(category, event_name);
   }
 
   return (
