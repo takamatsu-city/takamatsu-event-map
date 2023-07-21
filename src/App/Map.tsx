@@ -6,6 +6,7 @@ import { queryEventByDate } from './utils/queryEventByDate';
 import { showEventsOnMap } from './utils/showEventsOnMap';
 import { setPolygonFilter } from './utils/setPolygonFilter';
 import { fitBoundsToUpperScreen } from './utils/fitBoundsToUpperScreen';
+import { setGa4Event } from './utils/setGa4Event';
 import { getBboxFromLatLon } from './utils/getBboxFromLatLon';
 
 declare global {
@@ -102,6 +103,9 @@ const Component = (props: Props) => {
             const targetBbox = getBboxFromLatLon(lng, lat);
 
             fitBoundsToUpperScreen(targetBbox, mapObject);
+
+            const { category, event_name } = feature.properties;
+            setGa4Event(category, event_name);
 
           } else {
 
