@@ -75,11 +75,16 @@ const Component = (props: Props) => {
 
     mapObject.on('load', (e: any) => {
 
+      console.log('mapObject.on load');
+
       const progressEvents = queryEventByDate(['today'], events);
       showEventsOnMap(progressEvents, mapObject);
       setPolygonFilter(progressEvents, mapObject);
 
       mapObject.on('click', (e: any) => {
+
+        console.log('mapObject.on click');
+
 
         const features = mapObject.queryRenderedFeatures(e.point);
         if (features.length > 0) {
