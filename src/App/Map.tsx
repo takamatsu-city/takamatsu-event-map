@@ -73,7 +73,7 @@ const Component = (props: Props) => {
 
     if (!mapObject) return;
 
-    mapObject.once('load', (e: any) => {
+    const handleLoad = (e: any) => {
 
       console.log('mapObject.on load');
 
@@ -122,7 +122,14 @@ const Component = (props: Props) => {
           }
         }
       })
-    })
+    }
+
+    mapObject.on('load', handleLoad);
+
+    return () => {
+      mapObject.off('load', handleLoad)
+    }
+
   }, [events, listRef, mapObject, setClickedEvent, setIsBannerOpen, setIsPage]);
 
   return (
