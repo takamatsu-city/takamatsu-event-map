@@ -73,7 +73,7 @@ const Component = (props: Props) => {
 
     if (!mapObject) return;
 
-    mapObject.on('load', (e: any) => {
+    mapObject.once('load', (e: any) => {
 
       console.log('mapObject.on load');
 
