@@ -6,6 +6,7 @@ import { queryEventByDate } from './utils/queryEventByDate';
 import { showEventsOnMap } from './utils/showEventsOnMap';
 import { setPolygonFilter } from './utils/setPolygonFilter';
 import { fitBoundsToUpperScreen } from './utils/fitBoundsToUpperScreen';
+import { getBboxFromLatLon } from './utils/getBboxFromLatLon';
 
 declare global {
   interface Window {
@@ -98,14 +99,7 @@ const Component = (props: Props) => {
             // @ts-ignore
             const lat = feature.geometry.coordinates[1]
 
-            const size = 0.0000001 // 1.4cm
-            // クリックした地点から 1.4cm 四方の bbox を作成
-            const targetBbox = [
-              lng - size,
-              lat - size,
-              lng + size,
-              lat + size
-            ];
+            const targetBbox = getBboxFromLatLon(lng, lat);
 
             fitBoundsToUpperScreen(targetBbox, mapObject);
 

@@ -77,7 +77,7 @@ const Content = (props: Props) => {
           </label>
         )}
         <div id="list-content">
-          {!isPage && <NewEvents events={events} isPage={isPage} setIsPage={setIsPage} setEventDetail={setEventDetail} closeListHandler={closeListHandler} />}
+          {!isPage && <NewEvents events={events} isPage={isPage} map={mapObject} setIsPage={setIsPage} setEventDetail={setEventDetail} closeListHandler={closeListHandler} />}
           {isShowMarkerDetail && <MarkerDetail event={eventDetail} closeListHandler={closeListHandler} />}
           {isPage === 'marker' && <MarkerDetail event={clickedEvent} closeListHandler={closeListHandler} />}
           {isPage === 'search' && <Search setIsPage={setIsPage} setQueryDate={setQueryDate} setQueryKeyword={setQueryKeyword} closeListHandler={closeListHandler} />}
