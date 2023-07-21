@@ -61,7 +61,7 @@ const Content = (props: Props) => {
             </div>
           </div>
         </div>
-        <EventList events={searchedEvents} setIsPage={setIsPage} isPage={isPage} setEventDetail={setEventDetail} />
+        <EventList events={searchedEvents} isPage={isPage} map={mapObject} setIsPage={setIsPage}  setEventDetail={setEventDetail} />
       </div>
     </>
   );
