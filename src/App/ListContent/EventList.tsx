@@ -3,17 +3,21 @@ import { EventProps } from '../utils/types';
 import formatDate from '../utils/formatDate';
 import { targetIcon } from '../utils/targetIcon';
 import { setGa4Event } from '../utils/setGa4Event';
+import { getBboxFromLatLon } from '../utils/getBboxFromLatLon';
+import { fitBoundsToUpperScreen } from '../utils/fitBoundsToUpperScreen';
+import geolonia from '@geolonia/embed';
 
 type Props = {
   events: Feature[];
   isPage: string | null;
+  map: geolonia.Map | null;
   setIsPage: React.Dispatch<React.SetStateAction<string | null>>;
   setEventDetail: React.Dispatch<React.SetStateAction<Feature | null>>;
 }
 
 const Content = (props: Props) => {
 
-  const { events, isPage, setIsPage, setEventDetail } = props;
+  const { events, isPage, map, setIsPage, setEventDetail } = props;
 
   // start_date でソート
   events.sort((a, b) => {
@@ -26,6 +30,17 @@ const Content = (props: Props) => {
 
   const openDetailHandler = (feature: Feature) => {
     setEventDetail(feature);
+
+    if (map) {
+      // @ts-ignore
+      const lng = feature.geometry.coordinates[0]
+      // @ts-ignore
+      const lat = feature.geometry.coordinates[1]
+
+      const targetBbox = getBboxFromLatLon(lng, lat);
+
+      fitBoundsToUpperScreen(targetBbox, map);
+    }
 
     if (isPage === 'searchResults') {
       setIsPage('searchResultDetail');
