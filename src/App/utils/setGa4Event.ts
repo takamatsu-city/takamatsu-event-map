@@ -1,9 +1,8 @@
 export const setGa4Event = (category: string, eventName: string) => {
 
-  console.log("setGa4Event", category, eventName);
-
   // @ts-ignore
   window.dataLayer.push({
-    'select_takamatsu_event': category,
+    'event': 'takamatsu_event_event',
+    'takamatsu_event_category': category,
   });
 };
