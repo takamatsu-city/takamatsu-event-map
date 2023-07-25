@@ -11,10 +11,7 @@ const excel2csv = async (excelPath) => {
   rows.splice(0, 3);
   rows.splice(1, 2);
 
-  // Remove first column
   rows = rows.map((row, i) => {
-    row.shift();
-
     // 0000000001 → 1
     const num = parseInt(row[2]);
     if (!isNaN(num)) {
