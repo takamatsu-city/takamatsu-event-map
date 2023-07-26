@@ -25,6 +25,7 @@
   "scripts": {
     "start": "npm run build:excel2csv && npm run build:geojson && react-scripts start",
     "build": "npm run build:excel2csv && npm run build:geojson && react-scripts build",
+    "build:cname": "echo 'eventmap.takamatsu-fact.com.' > build/CNAME",
     "build:excel2csv": "node ./bin/build-excel2csv.js",
     "build:geojson": "node ./bin/build-geojson.js",
     "test": "react-scripts test",

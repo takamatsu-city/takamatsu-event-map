@@ -30,6 +30,10 @@ jobs:
       - name: Test
         run: npm test
 
+      - name: Set CNAME
+        if: ${{ github.repository_owner == 'takamatsu-city' }}
+        run: npm run build:cname
+
       - uses: actions/upload-artifact@v3
         if: ${{ github.ref == 'refs/heads/main' && github.repository_owner == 'geolonia' }}
         with:
