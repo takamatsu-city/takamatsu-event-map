@@ -31,7 +31,7 @@ jobs:
         run: npm test
 
       - uses: actions/upload-artifact@v3
-        if: ${{ github.ref == 'refs/heads/main' && github.repository_owner == 'geolonia' }}
+        if: ${{ github.ref == 'refs/heads/main' }}
         with:
           name: build-output
           path: build/
@@ -41,7 +41,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build
-    if: ${{ github.ref == 'refs/heads/main' && github.repository_owner == 'geolonia' }}
+    if: ${{ github.ref == 'refs/heads/main' }}
 
     steps:
       - uses: actions/download-artifact@v3
