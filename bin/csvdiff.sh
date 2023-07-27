@@ -2,9 +2,6 @@
 
 set -eu
 
-echo $GH_TOKEN
-echo $REPO
-
 DIRNAME="$(dirname -- "$0")"
 PROJECT_ROOT="${DIRNAME}/.."
 TMP="$(mktemp --directory)"
@@ -16,7 +13,7 @@ if [[ -z "${PR_ID}" ]]; then
   exit 0
 fi
 
-curl -sS --output "${TMP}/current.csv" https://geolonia.github.io/takamatsu-event-map/data.csv
+curl -sS --output "${TMP}/current.csv" https://takamatsu-city.github.io/takamatsu-event-map/data.csv
 cp "${PROJECT_ROOT}/public/data.csv" "${TMP}/new.csv"
 
 cd "${TMP}"
