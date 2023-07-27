@@ -13,7 +13,7 @@ if [[ -z "${PR_ID}" ]]; then
   exit 0
 fi
 
-curl -sS --output "${TMP}/current.csv" https://geolonia.github.io/takamatsu-area-map/data.csv
+curl -sS --output "${TMP}/current.csv" https://geolonia.github.io/takamatsu-event-map/data.csv
 cp "${PROJECT_ROOT}/public/data.csv" "${TMP}/new.csv"
 
 cd "${TMP}"
