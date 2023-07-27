@@ -1,1 +1,1 @@
-# takamatsu-area-map
+# takamatsu-event-map
