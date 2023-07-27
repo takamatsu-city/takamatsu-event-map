@@ -2,6 +2,9 @@
 
 set -eu
 
+echo $GH_TOKEN
+echo $REPO
+
 DIRNAME="$(dirname -- "$0")"
 PROJECT_ROOT="${DIRNAME}/.."
 TMP="$(mktemp --directory)"
