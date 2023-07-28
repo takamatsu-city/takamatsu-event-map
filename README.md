@@ -2,6 +2,26 @@
 
 高松市で公開されているイベントを地図上で閲覧することができます。
 
+https://eventmap.takamatsu-fact.com/
+
+<img width="1439" alt="スクリーンショット 2023-07-28 14 02 58" src="https://github.com/takamatsu-city/takamatsu-event-map/assets/8760841/8c4c9360-a25a-4ea8-bef5-0098752e28b2">
+
+
+## データ更新方法
+
+1. 「Upload files」 をクリック
+![スクリーンショット 2023-07-28 13 40 34](https://github.com/takamatsu-city/takamatsu-event-map/assets/8760841/f3bcf3d0-4161-45f1-bdc6-5617d552b032)
+
+2. 追加するイベントマスターデータのファイル名を `data.xlsm`に変更
+3. ファイルをドラッグ&ドロップする
+4. 編集内容を記入
+5. 下の「Create new brach for this commit and start a pull request」 を選択。
+6. 「Propose changes」 をクリック
+![スクリーンショット 2023-07-28 13 44 18](https://github.com/takamatsu-city/takamatsu-event-map/assets/8760841/72d5698c-cba6-48d0-a56e-33c40f3d615f)
+7. 「Create pull request」 をクリック
+![スクリーンショット 2023-07-28 13 44 32](https://github.com/takamatsu-city/takamatsu-event-map/assets/8760841/5aa57557-ffca-4911-9608-237d8660b6af)
+8. 「Merge pull request」 をクリック
+![スクリーンショット 2023-07-28 14 01 23](https://github.com/takamatsu-city/takamatsu-event-map/assets/8760841/74305751-742a-4d14-9f7e-bbe5b8c15659)
 
 ## 開発者向け
 
