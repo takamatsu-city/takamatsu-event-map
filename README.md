@@ -2,6 +2,11 @@
 
 高松市で公開されているイベントを地図上で閲覧することができます。
 
+https://eventmap.takamatsu-fact.com/
+
+<img width="1439" alt="スクリーンショット 2023-07-28 14 02 58" src="https://github.com/takamatsu-city/takamatsu-event-map/assets/8760841/8c4c9360-a25a-4ea8-bef5-0098752e28b2">
+
+
 ## データ更新方法
 
 1. 「Upload files」 をクリック
