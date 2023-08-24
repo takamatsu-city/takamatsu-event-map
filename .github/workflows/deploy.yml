@@ -27,11 +27,12 @@ jobs:
       - name: Build the app
         run: npm run build
 
-      - name: Add comment to show CSV diff
-        run: npm run csvdiff
-        env:
-          GH_TOKEN: ${{ github.token }}
-          REPO: "${{ github.repository_owner }}/${{ github.event.repository.name }}"
+      # TODO: Comment out for this error https://github.com/geolonia/takamatsu-event-map/actions/runs/5961405429/job/16170547414
+      # - name: Add comment to show CSV diff
+      #   run: npm run csvdiff
+      #   env:
+      #     GH_TOKEN: ${{ github.token }}
+      #     REPO: "${{ github.repository_owner }}/${{ github.event.repository.name }}"
 
       - name: Test
         run: npm test
